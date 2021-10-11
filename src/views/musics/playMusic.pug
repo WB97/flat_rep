@@ -1,0 +1,53 @@
+extends ../base.pug
+
+block content
+    audio(src="/"+music.fileUrl)
+    div.main-player(data-Id=music._id)
+        div.main
+            p#logo 
+                i.fa.fa-Music
+                | Music
+            div.left
+                img(src=`data:image/jpeg;base64,${base64}`)#track_image
+                div.volume
+                    p#volume_show 90
+                    i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
+                    input(type="range", min="0", max="100", value="90")
+
+            div.right
+                div.show_song_no
+                    p#present 1
+                    p /
+                    p#total 5
+            
+                p#name #{musicData.title}
+                p#artist #{musicData.artist}
+
+                div.middle
+                    button#pre
+                        i.fa.fa-step-backward
+                    button#play
+                        i.fa.fa-play
+                    button#next
+                        i.fa.fa-step-forward
+
+                div.duration
+                    input(type="range", min="0", max="100", value="0")#duration_silder
+                button#auto Auto play
+                    i.fas.fa-circle-notch
+block scripts
+    script(src="/static/js/musicPlayer.js")
+
+
+
+    //- div
+    //-     p=music.artist
+    //-     small=music.createdAt
+    //- small Upload by 
+    //-     a(href=`/users/${music.owner._id}`) #{music.owner.name}
+    //-     br
+    //- if loggedInUser._id==music.owner._id
+    //-     a(href=`${music.id}/edit`) Edit Music
+    //-     br
+    //-     a(href=`${music.id}/remove`) Delete Music
+    //-     br

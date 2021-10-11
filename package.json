@@ -1,0 +1,48 @@
+{
+  "name": "flat",
+  "version": "1.0.0",
+  "description": "Music Upload & Streaming",
+  "scripts": {
+    "server": "nodemon",
+    "assets": "webpack --config webpack.config.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WB97/flat_rep.git"
+  },
+  "author": "wook",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WB97/flat_rep/issues"
+  },
+  "homepage": "https://github.com/WB97/flat_rep#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "node-fetch": "^3.0.0",
+    "node-id3": "^0.2.3",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.3.0",
+    "mini-css-extract-plugin": "^2.4.2",
+    "nodemon": "^2.0.12",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.0",
+    "webpack-cli": "^4.9.0"
+  },
+  "type": "module"
+}

@@ -1,0 +1,13 @@
+extends base.pug
+include mixins/music.pug
+
+block content
+    form(method="GET").search_form
+        input(placeholder="Search by title", name="keyword" type="text")
+        button
+            i.fas.fa-search
+    div.video-grid
+        each music in musics
+            +musicList(music)
+        else
+            span.empty_message Music not found.

@@ -1,0 +1,9 @@
+extends ../base.pug
+
+block content
+    h3 Update Music #{music.title}
+    form(method="POST")
+        input(name="title", placeholder="Music Name", value=music.name, required, minlength=1)
+        input(name="artist",placeholder="Artist Name", required, type="text", value=music.artist, maxlength=50)
+        input(name="hashtags",placeholder="Hashtags, separated by comma.", required, type="text", value=music.hashtags.join())
+        input(value="Save" type="submit")

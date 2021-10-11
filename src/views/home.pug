@@ -1,0 +1,9 @@
+extends base.pug
+include mixins/music.pug
+
+block content
+    ul.video-grid
+        each music in musics
+            +musicList(music)
+        else
+            span.empty_message Music not found.

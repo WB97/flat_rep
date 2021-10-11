@@ -1,0 +1,9 @@
+mixin musicList(music)
+     a(href=`/musics/${music.id}`)
+        div
+        div
+            span=music.name
+            div
+                span #{music.meta.views} views
+                br
+                span #{music.owner.name}

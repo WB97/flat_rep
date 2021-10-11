@@ -1,0 +1,17 @@
+extends ../base.pug
+include ../mixins/music.pug
+include ../mixins/playlist.pug
+
+block content
+    div.profile_data
+        img(src="/"+user.avatarUrl).avatar
+        div #{user.name}
+    div.video-grid
+        each uploadMusic in user.musics
+            +musicList(uploadMusic)
+        else
+            span.empty_message Music not found.
+        each listMusic in user.playlist
+            +playlist(listMusic)
+        else
+            span.empty_message Music not found.

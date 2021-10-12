@@ -3,10 +3,24 @@ import User from "../models/User.js";
 import nodeID3 from "node-id3";
 
 export const homepageMusics = async (req, res) => {
+  let _musicData = [];
   const musics = await Music.find({})
     .sort({ createdAt: "desc" })
     .populate("owner");
-  return res.render("home", { pageTitle: "Home", musics });
+  for (let i = 0; i < musics.length; i++) {
+    const saveMusicData = nodeID3.read(musics[i].fileUrl);
+    const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
+      "base64"
+    );
+    let saveMusicData2 = {
+      title: saveMusicData.title,
+      artist: saveMusicData.artist,
+      _id: musics[i]._id,
+      img: `data:image/jpeg;base64,${base64}`,
+    };
+    _musicData.push(saveMusicData2);
+  }
+  return res.render("home", { pageTitle: "Home", _musicData });
 };
 
 export const playMusic = async (req, res) => {

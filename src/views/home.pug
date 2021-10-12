@@ -3,7 +3,10 @@ include mixins/music.pug
 
 block content
     ul.video-grid
-        each music in musics
+        each music in _musicData
             +musicList(music)
         else
             span.empty_message Music not found.
+    span
+block scripts
+    script(src="/static/js/musicData.js")

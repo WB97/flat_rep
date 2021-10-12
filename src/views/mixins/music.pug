@@ -1,9 +1,6 @@
 mixin musicList(music)
-     a(href=`/musics/${music.id}`)
-        div
-        div
-            span=music.name
-            div
-                span #{music.meta.views} views
-                br
-                span #{music.owner.name}
+    a(href=`/musics/${music._id}`)
+        div.music_main
+        img(src=music.img)#track_image
+        div.music_title=music.title
+        div=music.artist

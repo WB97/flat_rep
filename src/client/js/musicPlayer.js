@@ -36,7 +36,7 @@ const handlePushPlaylist = () => {
 
 play.addEventListener("click", handlePlay);
 audio.addEventListener("play", handlePushPlaylist);
-
+alert("ss");
 //create a audio Element
 
 // All songs list

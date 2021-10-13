@@ -1,0 +1,78 @@
+.sidebar {
+  z-index: 9999;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 300px;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 6px 0px;
+  font-size: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  a {
+    color: black;
+  }
+
+  // top
+  .menu_top {
+    padding: 0px 14px;
+    .logo_content {
+      display: flex;
+      height: 50px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0px;
+      i {
+        font-size: 30px;
+      }
+    }
+    .profile_link {
+      display: flex;
+      align-items: center;
+      height: 85px;
+      width: 100%;
+      border-radius: 25px;
+      transition: all 0.4s ease;
+      &:hover {
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .small_profile_img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        margin-left: 5px;
+      }
+      .small_profile_description {
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 15px;
+        .small_profile_name {
+          font-weight: 500;
+        }
+        .small_profile_text {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  // middle
+  .menu_middle {
+    width: 100%;
+    height: 77%;
+    border-top: 1px solid #fff;
+    position: relative;
+    .playlist_text {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}

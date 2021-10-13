@@ -6,6 +6,7 @@ module.exports = {
     main: "./src/client/js/main.js",
     musicPlayer: "./src/client/js/musicPlayer.js",
     musicData: "./src/client/js/musicData.js",
+    weather: "./src/client/js/weather.js",
   },
   mode: "development",
   watch: true,

@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
+import { playlistData, uploadData } from "./loadPlaylist.js";
 
 export const getJoin = (req, res) => {
   return res.render("join", {
@@ -157,11 +158,15 @@ export const profile = async (req, res) => {
       },
     })
     .populate("playlist");
+  const _playlistData = playlistData(user.playlist);
+  const _uploadData = uploadData(user.musics);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User Not found" });
   }
   return res.render("users/profile", {
     pageTitle: user.name,
     user,
+    _playlistData,
+    _uploadData,
   });
 };

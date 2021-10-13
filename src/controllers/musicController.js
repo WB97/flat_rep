@@ -1,33 +1,48 @@
 import Music from "../models/Music.js";
 import User from "../models/User.js";
-import nodeID3 from "node-id3";
+import {
+  playlistData,
+  uploadData,
+  allMusic,
+  nodeID3Read,
+} from "./loadPlaylist.js";
 
 export const homepageMusics = async (req, res) => {
-  let _musicData = [];
+  let user;
+  let _playlistData;
+  let _uploadData;
+  if (req.session.user) {
+    const { _id } = req.session.user;
+    user = await User.findById(_id).populate("musics").populate("playlist");
+
+    _playlistData = playlistData(user.playlist);
+    _uploadData = uploadData(user.musics);
+  }
   const musics = await Music.find({})
     .sort({ createdAt: "desc" })
     .populate("owner");
-  for (let i = 0; i < musics.length; i++) {
-    const saveMusicData = nodeID3.read(musics[i].fileUrl);
-    const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
-      "base64"
-    );
-    let saveMusicData2 = {
-      title: saveMusicData.title,
-      artist: saveMusicData.artist,
-      _id: musics[i]._id,
-      img: `data:image/jpeg;base64,${base64}`,
-    };
-    _musicData.push(saveMusicData2);
-  }
-  return res.render("home", { pageTitle: "Home", _musicData });
+  const _allMusic = allMusic(musics);
+  return res.render("home", {
+    pageTitle: "Home",
+    _allMusic,
+    _playlistData,
+    _uploadData,
+    user,
+  });
 };
 
 export const playMusic = async (req, res) => {
+  let user;
+  let _playlistData;
+  if (req.session.user) {
+    const { _id } = req.session.user;
+    user = await User.findById(_id).populate("playlist");
+    _playlistData = playlistData(user.playlist);
+  }
   const { id } = req.params;
   const music = await (await Music.findById(id)).populate("owner");
 
-  const musicData = nodeID3.read(music.fileUrl);
+  const musicData = nodeID3Read(music.fileUrl);
   const base64 = new Buffer.from(musicData.image.imageBuffer).toString(
     "base64"
   );
@@ -39,6 +54,7 @@ export const playMusic = async (req, res) => {
     pageTitle: music.name,
     music,
     musicData,
+    _playlistData,
     base64,
   });
 };
@@ -50,17 +66,23 @@ export const getUpload = (req, res) => {
 export const postUpload = async (req, res) => {
   const {
     file,
-    body: { name, artist, hashtags },
+    body: { hashtags },
     session: {
       user: { _id },
     },
   } = req;
+  const saveMusicData = nodeID3.read(file.path);
+  const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
+    "base64"
+  );
+  // console.log(saveMusicData);
+  let strHashtags = String(hashtags);
   try {
     const newMusic = await Music.create({
       fileUrl: file.path,
-      name,
-      artist,
-      hashtags: Music.formatHashtags(hashtags),
+      title: saveMusicData.title,
+      artist: saveMusicData.artist,
+      hashtags: Music.formatHashtags(strHashtags),
       owner: _id,
     });
     const user = await User.findById(_id);
@@ -100,7 +122,7 @@ export const postEdit = async (req, res) => {
   } = req.session;
   const music = await Music.exists({ _id: id });
   const _music = await Music.findById(id);
-  const { name, artist, hashtags } = req.body;
+  const { hashtags } = req.body;
   if (!music) {
     return res.status(404).render("404", { pageTitle: "Music not found." });
   }
@@ -108,8 +130,6 @@ export const postEdit = async (req, res) => {
     return res.status(403).redirect("/");
   }
   await Music.findByIdAndUpdate(id, {
-    name,
-    artist,
     hashtags: Music.formatHashtags(hashtags),
   });
   return res.redirect(`/musics/${id}`);

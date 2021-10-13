@@ -1,12 +1,14 @@
 extends base.pug
 include mixins/music.pug
-
+include mixins/playlist.pug
+block weather
+    span.weather
 block content
     ul.video-grid
-        each music in _musicData
+        each music in _allMusic
             +musicList(music)
         else
             span.empty_message Music not found.
     span
 block scripts
-    script(src="/static/js/musicData.js")
+    script(src="/static/js/weather.js")

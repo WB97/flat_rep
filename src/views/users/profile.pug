@@ -7,11 +7,9 @@ block content
         img(src="/"+user.avatarUrl).avatar
         div #{user.name}
     div.video-grid
-        each uploadMusic in user.musics
+        each uploadMusic in _uploadData
             +musicList(uploadMusic)
         else
             span.empty_message Music not found.
-        each listMusic in user.playlist
-            +playlist(listMusic)
-        else
             span.empty_message Music not found.
+            

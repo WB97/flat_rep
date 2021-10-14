@@ -11,7 +11,7 @@ const auto_play = document.querySelector("#auto");
 const present = document.querySelector("#present");
 const total = document.querySelector("#total");
 const artist = document.querySelector("#artist");
-const audio = document.querySelector("audio");
+const audio = document.querySelector("#audio_page");
 const main = document.querySelector(".main-player");
 
 let timer;

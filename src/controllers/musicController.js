@@ -71,7 +71,7 @@ export const postUpload = async (req, res) => {
       user: { _id },
     },
   } = req;
-  const saveMusicData = nodeID3.read(file.path);
+  const saveMusicData = nodeID3Read(file.path);
   const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
     "base64"
   );

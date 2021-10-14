@@ -1,14 +1,4 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/static/css/styles.css" )
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css")
-        link(href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet')
-        title Document
-    body
+
 div.sidebar
     div.menu_top
         div.logo_content
@@ -17,23 +7,27 @@ div.sidebar
                     i.fas.fa-home
             i.fas.fa-bars#btn
         hr
-        a(href="#")
-            div.profile_link
-                img(src="/"+loggedInUser.avatarUrl).small_profile_img
-                div.small_profile_description
-                    div.small_profile_name JungWook
-                    div.small_profile_text Front end Developer
+        div.profile_link
+            if loggedIn
+                a(href="#")
+                    img(src="/"+loggedInUser.avatarUrl).small_profile_img
+                    div.small_profile_description
+                        div.small_profile_name JungWook
+                        div.small_profile_text Front end Developer
+            else
+                a(href="#") Login
         hr
     div.menu_middle
         div.playlist_text Playlist
         //- span=_playlistData
-        each listMusic in _playlistData
-            ul
-                li
-                    +playList2(listMusic)
-        else
-            span aa
-        script(src=".../client/js/sidebar.js")
+        if _playlistData
+            each listMusic in _playlistData
+                ul
+                    li
+                        +playList2(listMusic)
+            else
+                span empty
+script(src="/static/js/sidebar.js")
             
 
                         

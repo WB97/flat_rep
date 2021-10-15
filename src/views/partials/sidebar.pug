@@ -1,35 +1,24 @@
 
 div.sidebar
     div.menu_top
-        div.logo_content
-            div.logo
-                a(href="#")
-                    i.fas.fa-home
-            i.fas.fa-bars#btn
-        hr
+        p
+        i.fas.fa-bars#btn.logo_content
         div.profile_link
             if loggedIn
-                a(href="#")
-                    img(src="/"+loggedInUser.avatarUrl).small_profile_img
-                    div.small_profile_description
-                        div.small_profile_name JungWook
-                        div.small_profile_text Front end Developer
+                div.small_profile
+                    a(href=`/users/${loggedInUser._id}`)
+                        img(src="/"+loggedInUser.avatarUrl).small_profile_img
+                        div.small_profile_description
+                            div.small_profile_name JungWook
+                            div.small_profile_text Front end Developer
             else
-                a(href="#") Login
-        hr
-    div.menu_middle
+                a(href="/login").login_btn Login
         div.playlist_text Playlist
-        //- span=_playlistData
+    div.menu_middle
         if _playlistData
-            div
-                each listMusic in _playlistData
-                        +playList2(listMusic)
-                else
-                    span empty
+            each listMusic in _playlistData
+                div.playlist_list
+                    +playList2(listMusic)
+            else
+                span empty
 script(src="/static/js/sidebar.js")
-            
-
-                        
-                    
-//- i.fas.fa-sign-out-alt
-//- i.bx.bx-upload

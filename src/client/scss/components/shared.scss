@@ -3,12 +3,26 @@
   font-size: 18px;
 }
 .video-grid {
-  display: grid;
+  display: flex;
+  height: 215px;
   gap: 50px;
-  grid-template-columns: repeat(4, 260px);
+  overflow: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: black;
+  }
+  div {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 .auth-switch {
-  text-align: center;
+  text-align: auto;
   margin-top: 20px;
   a {
     text-decoration: underline;
@@ -22,7 +36,13 @@
 }
 
 #track_image {
-  width: 300px;
-  width: 300px;
+  width: 150px;
+  width: 150px;
   border-radius: 20%;
+}
+
+#playpage_track_image {
+  width: 300px;
+  width: 300px;
+  border-radius: 15px;
 }

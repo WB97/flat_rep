@@ -1,9 +1,11 @@
 mixin playList2(music)
-    audio(src="/"+music.fileUrl, controls)#audio_playlist
-        div.playlist_music_main
-            img(src=music.img)#playlist_track_image
-            div.playlist_music_title=music.title
-            div.playlist_music_artist=music.artist
+    a(href=`/musics/${music._id}`).playlist_music_main
+        div.playlist_wrap
+            img(src=music.img).playlist_track_image
+            div.title_artist-wrap
+                div.playlist_music_title=music.title
+                div.playlist_music_artist=music.artist
     if !loggedInUser._id !== user._id
         i(data-Id=music._id).far.fa-trash-alt.delPlaylist
-        hr
+    audio(src="/"+music.fileUrl).audio_playlist
+    hr

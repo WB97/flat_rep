@@ -102,6 +102,7 @@ export const postEdit = async (req, res) => {
       errorMessage: editErrorMessage,
     });
   }
+
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
@@ -114,7 +115,7 @@ export const postEdit = async (req, res) => {
     { new: true }
   );
   req.session.user = updatedUser;
-  return res.redirect("/users/edit");
+  return res.redirect("/");
 };
 
 export const getChangePassword = (req, res) => {

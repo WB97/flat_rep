@@ -4,14 +4,20 @@ block content
     block sidebar
     if errorMessage
         span=errorMessage
-    form(method="POST", enctype="multipart/form-data")
+    form(method="POST", enctype="multipart/form-data").qwe
         label(for="music") Music File
-        input(type="file", accept="audio/*", id="music", name="music", required)
+        br
+        input(type="file", accept="audio/*", id="music", name="music", required).qwe
+        br
+        br
         //- input(type="text", name="hashtags")
         label(for="rain") Rain
-        input(name="hashtags",placeholder="Create a hashtag", type="checkbox" id="rain" value="rain")
+        input(name="hashtags",placeholder="Create a hashtag", type="checkbox" id="rain" value="rain").qwe
+        
         label(for="clouds") Clouds
-        input(name="hashtags",placeholder="Create a hashtag", type="checkbox" id="clouds" value="clouds")
+        input(name="hashtags",placeholder="Create a hashtag", type="checkbox" id="clouds" value="clouds").qwe
+        
         label(for="clear") Clear
-        input(name="hashtags",placeholder="Create a hashtag", type="checkbox" id="clear" value="clear")
-        input(type="submit", value="Upload Music")
+        input(name="hashtags",placeholder="Create a hashtag", type="checkbox" id="clear" value="clear").qwe
+        br
+        input(type="submit", value="Upload Music").qwer

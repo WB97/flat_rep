@@ -1,5 +1,6 @@
 import Music from "../models/Music.js";
 import User from "../models/User.js";
+import mongoose from "mongoose";
 import {
   playlistData,
   uploadData,
@@ -175,6 +176,17 @@ export const pushPlaylist = async (req, res) => {
 };
 
 export const deletePlaylist = async (req, res) => {
-  console.log(req.params.id);
+  let { id } = req.params;
+  id = mongoose.Types.ObjectId(id);
+  const user = await User.findOneAndUpdate(
+    { playlist: id },
+    {
+      $pull: {
+        playlist: id,
+      },
+    }
+  );
+  await user.save();
+  console.log(user);
   return res.sendStatus(200);
 };

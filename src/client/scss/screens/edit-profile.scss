@@ -1,8 +1,16 @@
 .edit-profile_form {
   label {
-    font-size: 14px;
+    font-size: 30px;
     margin-bottom: 15px;
     display: block;
+    height: 100px;
+    
+  }
+  width: 70%;
+  height: 60%;
+
+  a{
+    font-size: 30px;
   }
 }
 
@@ -12,4 +20,16 @@
   a {
     text-decoration: underline;
   }
+}
+.chp{
+  margin-bottom: 10px;
+  width: 60%;
+}
+.chb{
+  position: relative;
+  top:20%;
+  left: 70%;
+}
+.chpa{
+  height: 30%;
 }

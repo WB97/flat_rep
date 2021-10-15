@@ -9,7 +9,7 @@ block content
                 i.fa.fa-Music
                 | Music
             div.left
-                img(src=`data:image/jpeg;base64,${base64}`)#track_image
+                img(src=`data:image/jpeg;base64,${base64}`)#playpage_track_image
                 div.volume
                     p#volume_show 90
                     i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
@@ -37,9 +37,7 @@ block content
                 button#auto Auto play
                     i.fas.fa-circle-notch
     if loggedInUser._id==music.owner._id
-    a(href=`${music.id}/edit`) Edit Music
-    br
-    a(href=`${music.id}/remove`) Delete Music
+        a(href=`${music.id}/remove`) Delete Music
 block scripts
     script(src="/static/js/musicPlayer.js")
 

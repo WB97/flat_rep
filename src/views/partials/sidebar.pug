@@ -21,12 +21,11 @@ div.sidebar
         div.playlist_text Playlist
         //- span=_playlistData
         if _playlistData
-            each listMusic in _playlistData
-                ul
-                    li
+            div
+                each listMusic in _playlistData
                         +playList2(listMusic)
-            else
-                span empty
+                else
+                    span empty
 script(src="/static/js/sidebar.js")
             
 

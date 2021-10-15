@@ -51,6 +51,7 @@ export const playMusic = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "Music not found." });
   }
   return res.render("musics/playMusic", {
+    user,
     pageTitle: music.name,
     music,
     musicData,
@@ -122,16 +123,12 @@ export const postEdit = async (req, res) => {
   } = req.session;
   const music = await Music.exists({ _id: id });
   const _music = await Music.findById(id);
-  const { hashtags } = req.body;
   if (!music) {
     return res.status(404).render("404", { pageTitle: "Music not found." });
   }
   if (String(_music.owner) !== String(_id)) {
     return res.status(403).redirect("/");
   }
-  await Music.findByIdAndUpdate(id, {
-    hashtags: Music.formatHashtags(hashtags),
-  });
   return res.redirect(`/musics/${id}`);
 };
 
@@ -175,4 +172,9 @@ export const pushPlaylist = async (req, res) => {
     return res.sendStatus(200);
   }
   return res.sendStatus(401);
+};
+
+export const deletePlaylist = async (req, res) => {
+  console.log(req.params.id);
+  return res.sendStatus(200);
 };

@@ -13,6 +13,7 @@ const total = document.querySelector("#total");
 const artist = document.querySelector("#artist");
 const audio = document.querySelector("#audio_page");
 const main = document.querySelector(".main-player");
+const delPlaylist = document.querySelector(".delPlaylist");
 
 let timer;
 let autoplay = 0;
@@ -34,14 +35,16 @@ const handlePushPlaylist = () => {
   fetch(`/api/musics/${id}/pushPlaylist`, { method: "POST" });
 };
 
+const handleDelete = (event) => {
+  const parent = event.target.parentElement;
+  // const { id } = delPlaylist.dataset;
+  // let delFilter = delFilter.filter((todo) => id !== parseInt(deleteLi.id));
+  // fetch(`/api/musics/${id}/deletePlaylist`, { method: "POST" });
+  // const deleteLi = event.target.parentElement;
+  // deleteLi.remove();
+  console.log(parent);
+};
+
 play.addEventListener("click", handlePlay);
 audio.addEventListener("play", handlePushPlaylist);
-//create a audio Element
-
-// All songs list
-// let All_song = [
-//   {
-//     name: "first song",
-//     path: "",
-//   },
-// ];
+delPlaylist.addEventListener("click", handleDelete);

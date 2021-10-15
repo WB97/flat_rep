@@ -1,6 +1,9 @@
-mixin playList2(music2)
-    audio(src="/"+music2.fileUrl, controls)#audio_playlist
+mixin playList2(music)
+    audio(src="/"+music.fileUrl, controls)#audio_playlist
         div.playlist_music_main
-            img(src=music2.img)#playlist_track_image
-            div.playlist_music_title=music2.title
-            div.playlist_music_artist=music2.artist
+            img(src=music.img)#playlist_track_image
+            div.playlist_music_title=music.title
+            div.playlist_music_artist=music.artist
+    if !loggedInUser._id !== user._id
+        i(data-Id=music._id).far.fa-trash-alt.delPlaylist
+        hr

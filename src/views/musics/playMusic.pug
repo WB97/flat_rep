@@ -36,6 +36,10 @@ block content
                     input(type="range", min="0", max="100", value="0")#duration_silder
                 button#auto Auto play
                     i.fas.fa-circle-notch
+    if loggedInUser._id==music.owner._id
+    a(href=`${music.id}/edit`) Edit Music
+    br
+    a(href=`${music.id}/remove`) Delete Music
 block scripts
     script(src="/static/js/musicPlayer.js")
 

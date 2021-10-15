@@ -1,6 +1,7 @@
 extends ../base.pug
 
 block content
+    block sidebar
     h3 Update Music #{music.title}
     form(method="POST")
         input(name="title", placeholder="Music Name", value=music.name, required, minlength=1)

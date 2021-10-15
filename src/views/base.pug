@@ -9,7 +9,8 @@ html(lang="en")
         title #{pageTitle} | FLAT
     body
         include partials/header.pug
-        include partials/sidebar.pug
+        block sidebar
+            include partials/sidebar.pug
         main 
             block content
         include partials/footer.pug

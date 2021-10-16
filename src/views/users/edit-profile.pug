@@ -1,19 +1,24 @@
 extends ../base.pug
 
 block content
-    block sidebar
     if errorMessage
         span=errorMessage
     div
         img(src="/"+loggedInUser.avatarUrl, width="100px", height="100px")
     form(method="POST", enctype="multipart/form-data").edit-profile_form
         label(for="avatar") Avatar
-        input(type="file", id="avatar", name="avatar", accept="image/*")
-        input(placeholder="Name",name="name", type="text", required, value=loggedInUser.name)
-        input(placeholder="Email", name="email", type="email", required, value=loggedInUser.email)
-        input(placeholder="Username",name="username", type="text", required, value=loggedInUser.username)
-        input(placeholder="Location",name="location", type="text", value=loggedInUser.location)
-        input(type="submit", value="Update Profile")
+    
+        input(type="file", id="avatar", style="height=100px", name="avatar", accept="image/*").editp
+       
+        input(placeholder="Name",name="name", style="height=100px" ,type="text", required, value=loggedInUser.name).editp
+        br
+        input(placeholder="Email", name="email", style="height=100px" ,type="email", required, value=loggedInUser.email).editp
+        br
+        input(placeholder="Username",name="username", style="height=100px" ,type="text", required, value=loggedInUser.username).editp
+        br
+        input(placeholder="Location",name="location", style="height=100px" ,type="text", value=loggedInUser.location).editp
+        br
+        input(type="submit", value="Update Profile").editb
         hr
         div
             a(href="change-password") Change Password

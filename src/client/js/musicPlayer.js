@@ -4,7 +4,7 @@ const recent_volume = document.querySelector("#volume");
 const volume_show = document.querySelector("#volume_show");
 const volume_bar = document.querySelector("#volume_bar");
 const slider = document.querySelector("#duration_silder");
-const track_image = document.querySelector("#track_image");
+const track_image = document.querySelector(".playpage_track_imag");
 const present = document.querySelector("#present");
 const total = document.querySelector("#total");
 const artist = document.querySelector("#artist");
@@ -18,10 +18,10 @@ const { id } = main.dataset;
 const handlePlay = (e) => {
   if (audio.paused) {
     audio.play();
-    play.innerHTML = '<i class="fa fa-pause"></i>';
+    play.classList.add("hide");
   } else {
     audio.pause();
-    play.innerHTML = '<i class="fa fa-play"></i>';
+    play.classList.remove("hide");
   }
 };
 
@@ -35,6 +35,7 @@ const handleVolume = () => {
 };
 
 play.addEventListener("click", handlePlay);
+track_image.addEventListener("click", handlePlay);
 audio.addEventListener("play", handlePushPlaylist);
 window.addEventListener("load", (e) => {
   audio.volume = 0.5;

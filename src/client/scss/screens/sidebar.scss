@@ -120,6 +120,13 @@
     padding: 0px 14px 0px 14px;
     border-top: 1px solid #fff;
     position: relative;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: black;
+    }
     .playlist_list {
       position: relative;
       width: 90%;

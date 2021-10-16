@@ -5,26 +5,30 @@ block content
     audio(src="/"+music.fileUrl)#audio_page
     div.main-player(data-Id=music._id)
         div.main
-            p#logo 
-                i.fa.fa-Music
-                | Music
-            div.left
-                img(src=`data:image/jpeg;base64,${base64}`)#playpage_track_image
+            img(src=`data:image/jpeg;base64,${base64}`)#bgImg
+
+
+
+            div.top
+                div.title_artist_box
+                    p#name #{musicData.title}
+                    p#artist #{musicData.artist}
+                div.lyrics_head
+            div.middle
+                div.playbtn-section
+                    img(src=`data:image/jpeg;base64,${base64}`).playpage_track_imag
+                    button#play
+                        i.fa.fa-play
+                p.lyrics_main !{musicData.unsynchronisedLyrics ? musicData.unsynchronisedLyrics.text : "Not found lyrics"}
+            
+            div.bottom
                 div#volume
                     p#volume_show 50
                     i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
                     input(type="range", min="0", max="100", value="50")#volume_bar
 
-            div.right
-                p#name #{musicData.title}
-                p#artist #{musicData.artist}
-
-                div.middle
-                    button#play
-                        i.fa.fa-play
-
-                div.duration
-                    input(type="range", min="0", max="100", value="0")#duration_silder
+            //- div.duration
+            //-     input(type="range", min="0", max="100", value="0")#duration_silder
     if loggedInUser._id==music.owner._id
         a(href=`${music.id}/remove`) Delete Music
 block scripts

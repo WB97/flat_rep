@@ -60,5 +60,12 @@ export const allMusic = (data) => {
 
 export const nodeID3Read = (data) => {
   const musicData = nodeID3.read(data);
+  const lyrics = musicData.unsynchronisedLyrics
+    ? musicData.unsynchronisedLyrics.text
+    : "aa";
+  if (musicData.unsynchronisedLyrics) {
+    musicData.unsynchronisedLyrics.text = lyrics.replace(/\r\n/g, "<br>");
+  }
+  // console.log(musicData);
   return musicData;
 };

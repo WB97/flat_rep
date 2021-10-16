@@ -7,5 +7,6 @@ mixin playList2(music)
                 div.playlist_music_artist=music.artist
     if !loggedInUser._id !== user._id
         i(data-Id=music._id).far.fa-trash-alt.delPlaylist
-    audio(src="/"+music.fileUrl).audio_playlist
+    audio(src="/"+music.fileUrl).playlist_audio
+    i.far.fa-play-circle.playlist_playbtn
     hr

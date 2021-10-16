@@ -70,31 +70,44 @@
           color: white;
         }
       }
-      .small_profile_img {
-        width: 75px;
-        height: 75px;
-        border-radius: 50%;
-        margin-left: 5px;
-      }
-      .small_profile_description {
-        height: 40px;
+      .small_profile {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-left: 15px;
-        .small_profile_name {
-          font-weight: 500;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        .small_profile_edit,
+        .small_profile_upload {
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          font-size: 25px;
         }
-        .small_profile_text {
-          font-size: 15px;
+        .small_profile_upload {
+          top: 50px;
+          right: 18px;
+          font-size: 26px;
+        }
+
+        .small_profile_img {
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          margin-left: 5px;
+        }
+        .small_profile_description {
+          height: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-left: 15px;
+          .small_profile_name {
+            font-weight: 500;
+          }
+          .small_profile_text {
+            font-size: 15px;
+          }
         }
       }
-    }
-    .small_profile {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 100%;
     }
   }
 
@@ -104,20 +117,24 @@
     pointer-events: none;
     width: 100%;
     height: 77%;
-    padding: 0px 0px 0px 14px;
+    padding: 0px 14px 0px 14px;
     border-top: 1px solid #fff;
     position: relative;
     .playlist_list {
       position: relative;
-      margin-top: 20px;
-      margin-bottom: 12px;
+      width: 90%;
+      // margin: 12px auto;
     }
     i {
+      font-size: 25px;
       position: absolute;
-      top: 75px;
+      top: 70px;
       right: 10px;
       cursor: pointer;
       color: black;
+    }
+    .playlist_playbtn {
+      right: 50px;
     }
     .playlist_wrap {
       position: relative;
@@ -163,6 +180,10 @@
     opacity: 1;
     pointer-events: auto;
   }
+  #logout {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 #btn {
@@ -172,6 +193,18 @@
   top: 5px;
   right: 15px;
   font-size: 35px;
+}
+#logout {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 7;
+  left: 18px;
+  font-size: 30px;
+  transition: all 0.5s ease;
+  &:hover {
+    color: black;
+  }
 }
 
 .playlist_track_image {

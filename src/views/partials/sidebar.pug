@@ -3,9 +3,16 @@ div.sidebar
     div.menu_top
         p
         i.fas.fa-bars#btn.logo_content
+        if loggedIn
+            a(href="/users/logout")
+                    i.fas.fa-sign-out-alt#logout
         div.profile_link
             if loggedIn
                 div.small_profile
+                    a(href="/users/edit")
+                        i.far.fa-edit.small_profile_edit
+                    a(href="/musics/upload")
+                        i.far.fa-caret-square-up.small_profile_upload
                     a(href=`/users/${loggedInUser._id}`)
                         img(src="/"+loggedInUser.avatarUrl).small_profile_img
                         div.small_profile_description

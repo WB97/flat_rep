@@ -1,13 +1,10 @@
-const previous = document.querySelector("#pre");
 const play = document.querySelector("#play");
-const next = document.querySelector("#next");
 const name = document.querySelector("#name");
 const recent_volume = document.querySelector("#volume");
 const volume_show = document.querySelector("#volume_show");
+const volume_bar = document.querySelector("#volume_bar");
 const slider = document.querySelector("#duration_silder");
-const show_duration = document.querySelector("#pre");
 const track_image = document.querySelector("#track_image");
-const auto_play = document.querySelector("#auto");
 const present = document.querySelector("#present");
 const total = document.querySelector("#total");
 const artist = document.querySelector("#artist");
@@ -28,9 +25,18 @@ const handlePlay = (e) => {
   }
 };
 
-const handlePushPlaylist = () => {
+const handlePushPlaylist = (e) => {
   fetch(`/api/musics/${id}/pushPlaylist`, { method: "POST" });
+};
+
+const handleVolume = () => {
+  volume_show.innerText = volume_bar.value;
+  audio.volume = volume_bar.value / 100;
 };
 
 play.addEventListener("click", handlePlay);
 audio.addEventListener("play", handlePushPlaylist);
+window.addEventListener("load", (e) => {
+  audio.volume = 0.5;
+});
+volume_bar.addEventListener("input", handleVolume);

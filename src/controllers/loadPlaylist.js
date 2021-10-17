@@ -2,11 +2,14 @@ import nodeID3 from "node-id3";
 
 export const playlistData = (data) => {
   let playlistData = [];
+  let base64;
   for (let i = 0; i < data.length; i++) {
     const saveMusicData = nodeID3.read(data[i].fileUrl);
-    const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
-      "base64"
-    );
+    if (saveMusicData.image) {
+      base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
+        "base64"
+      );
+    }
     let saveMusicData2 = {
       fileUrl: data[i].fileUrl,
       title: saveMusicData.title,
@@ -22,17 +25,22 @@ export const playlistData = (data) => {
 
 export const uploadData = (data) => {
   let uploadMusicData = [];
+  let imgData = "nuknown";
   for (let i = 0; i < data.length; i++) {
     const saveMusicData = nodeID3.read(data[i].fileUrl);
-    const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
-      "base64"
-    );
+    if (saveMusicData.image) {
+      const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
+        "base64"
+      );
+      imgData = `data:image/jpeg;base64,${base64}`;
+    }
     let saveMusicData2 = {
       fileUrl: data[i].fileUrl,
       title: saveMusicData.title,
       artist: saveMusicData.artist,
       _id: data[i]._id,
-      img: `data:image/jpeg;base64,${base64}`,
+      like: data[i].like,
+      img: imgData,
     };
     uploadMusicData.push(saveMusicData2);
   }
@@ -41,17 +49,22 @@ export const uploadData = (data) => {
 
 export const allMusic = (data) => {
   let allMusic = [];
+  let imgData = "nuknown";
   for (let i = 0; i < data.length; i++) {
     const saveMusicData = nodeID3.read(data[i].fileUrl);
-    const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
-      "base64"
-    );
+    if (saveMusicData.image) {
+      const base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString(
+        "base64"
+      );
+      imgData = `data:image/jpeg;base64,${base64}`;
+    }
     let saveMusicData2 = {
       fileUrl: data[i].fileUrl,
       title: saveMusicData.title,
       artist: saveMusicData.artist,
       _id: data[i]._id,
-      img: `data:image/jpeg;base64,${base64}`,
+      like: data[i].like,
+      img: imgData,
     };
     allMusic.push(saveMusicData2);
   }

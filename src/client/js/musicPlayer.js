@@ -4,6 +4,7 @@ const recent_volume = document.querySelector("#volume");
 const volume_show = document.querySelector("#volume_show");
 const volume_bar = document.querySelector("#volume_bar");
 const slider = document.querySelector("#duration_silder");
+const playbtn_section = document.querySelector(".playbtn-section");
 const track_image = document.querySelector(".playpage_track_imag");
 const present = document.querySelector("#present");
 const total = document.querySelector("#total");
@@ -11,6 +12,8 @@ const artist = document.querySelector("#artist");
 const audio = document.querySelector("#audio_page");
 const main = document.querySelector(".main-player");
 const like_icon = document.querySelector(".like_icon");
+const duration_slider = document.querySelector("#duration_slider");
+const duration_text = document.querySelector(".duration_text");
 
 let timer;
 let autoplay = 0;
@@ -48,11 +51,30 @@ const handleLike = (e) => {
   }
 };
 
-play.addEventListener("click", handlePlay);
-track_image.addEventListener("click", handlePlay);
-audio.addEventListener("play", handlePushPlaylist);
-window.addEventListener("load", (e) => {
-  audio.volume = 0.5;
-});
-volume_bar.addEventListener("input", handleVolume);
-like_icon.addEventListener("click", handleLike);
+const handleDuration = (e) => {
+  let sec = audio.currentTime;
+  let min = Math.floor(sec / 60);
+  sec = Math.floor(sec % 60);
+  if (sec.toString().length < 2) sec = "0" + sec;
+  if (min.toString().length < 2) min = "0" + min;
+  duration_text.innerHTML = min + ":" + sec;
+  let position = audio.currentTime * (100 / audio.duration);
+  duration_slider.value = position;
+};
+
+const handleAudioSeek = (e) => {
+  let seek = audio.duration * (duration_slider.value / 100);
+  audio.currentTime = seek;
+};
+window.onload = function () {
+  play.addEventListener("click", handlePlay);
+  audio.addEventListener("timeupdate", handleDuration);
+  duration_slider.addEventListener("change", handleAudioSeek);
+  playbtn_section.addEventListener("click", handlePlay);
+  audio.addEventListener("play", handlePushPlaylist);
+  window.addEventListener("load", (e) => {
+    audio.volume = 0.5;
+  });
+  volume_bar.addEventListener("input", handleVolume);
+  like_icon.addEventListener("click", handleLike);
+};

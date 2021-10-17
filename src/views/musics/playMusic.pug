@@ -7,31 +7,34 @@ block content
         div.main
             img(src=`data:image/jpeg;base64,${base64}`)#bgImg
             if check
-                i.fas.fa-heart.like_icon(data-Id="flase")
+                i.fas.fa-heart.like_icon(data-Id="flase") &nbsp;#{music.like}
             else
-                i.far.fa-heart.like_icon(data-Id="true")
+                i.far.fa-heart.like_icon(data-Id="true") &nbsp;#{music.like}
+            div#volume
+                    p#volume_show 50
+                    i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
+                    input(type="range", min="0", max="100", value="50")#volume_bar
 
 
             div.top
                 div.title_artist_box
                     p#name #{musicData.title}
                     p#artist #{musicData.artist}
-                div.lyrics_head
             div.middle
                 div.playbtn-section
-                    img(src=`data:image/jpeg;base64,${base64}`).playpage_track_imag
+                    if base64
+                        img(src=`data:image/jpeg;base64,${base64}`).playpage_track_imag
+                    else
+                        i.fas.fa-compact-disc.cdimg
                     button#play
                         i.fa.fa-play
                 p.lyrics_main !{musicData.unsynchronisedLyrics ? musicData.unsynchronisedLyrics.text : "Not found lyrics"}
             
             div.bottom
-                div#volume
-                    p#volume_show 50
-                    i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
-                    input(type="range", min="0", max="100", value="50")#volume_bar
+                div#duration
+                    input(type="range", min="0", max="100", value="0")#duration_slider
+                span.duration_text 00:00
 
-            //- div.duration
-            //-     input(type="range", min="0", max="100", value="0")#duration_silder
     if loggedInUser._id==music.owner._id
         a(href=`${music.id}/remove`) Delete Music
 block scripts

@@ -4,12 +4,19 @@ include mixins/playlist.pug
 block weather
     span.weather
 block content
+    div.chart_text All music
     ul.video-grid
         each music in _allMusic
             +musicList(music)
         else
             span.empty_message Music not found.
-    span
+    hr
+    div.chart_text Music chart
+    ul.video-grid
+        each music in _allChartMusric
+            +musicList(music)
+        else
+            span.empty_message Music not found.
 block scripts
     script(src="/static/js/weather.js")
     script(src="/static/js/home.js")

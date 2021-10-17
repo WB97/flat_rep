@@ -31,6 +31,19 @@
     cursor: pointer;
     font-size: 20px;
   }
+  #volume {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    top: 40px;
+    right: 65px;
+    width: 20%;
+    #volume_bar {
+      width: 70%;
+    }
+  }
   // button {
   //   padding: 10px 12px;
   //   margin: 0 10px;
@@ -40,16 +53,15 @@
 .top {
   position: absolute;
   display: flex;
-  justify-content: space-around;
   top: 60px;
   width: 100%;
-  font-size: 30px;
   .title_artist_box {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-left: 50px;
+    margin-left: 110px;
     width: 40%;
+    font-size: 30px;
     #name,
     #artist {
       overflow: hidden;
@@ -57,12 +69,6 @@
       white-space: nowrap;
       height: 40px;
     }
-  }
-  .lyrics_head {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
   }
 }
 .middle {
@@ -97,6 +103,9 @@
         height: 95%;
       }
     }
+    .cdimg {
+      font-size: 200px;
+    }
     #play {
       position: absolute;
       font-size: 100px;
@@ -124,30 +133,51 @@
 
 .bottom {
   position: absolute;
-  top: 600px;
+  top: 640px;
   left: 100px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  #volume {
-    width: 30%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 80%;
-    outline: none;
-    height: 2px;
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      cursor: pointer;
-      background: #353535;
+  width: 40%;
+  // #volume {
+  //   width: 38%;
+  //   display: flex;
+  //   justify-content: space-around;
+  //   align-items: center;
+  // }
+  #duration {
+    height: 20px;
+    width: 100%;
+    #duration_slider {
     }
+    .duration_text {
+      margin-top: 10px;
+    }
+  }
+  // input[type="range"] {
+  //   -webkit-appearance: none;
+  //   width: 80%;
+  //   outline: none;
+  //   height: 2px;
+  //   &::-webkit-slider-thumb {
+  //     -webkit-appearance: none;
+  //     height: 20px;
+  //     width: 20px;
+  //     border-radius: 50%;
+  //     cursor: pointer;
+  //     background: #353535;
+  //   }
+  // }
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 80%;
+  outline: none;
+  height: 2px;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #353535;
   }
 }
 

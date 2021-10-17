@@ -10,6 +10,7 @@ const total = document.querySelector("#total");
 const artist = document.querySelector("#artist");
 const audio = document.querySelector("#audio_page");
 const main = document.querySelector(".main-player");
+const like_icon = document.querySelector(".like_icon");
 
 let timer;
 let autoplay = 0;
@@ -29,9 +30,22 @@ const handlePushPlaylist = (e) => {
   fetch(`/api/musics/${id}/pushPlaylist`, { method: "POST" });
 };
 
-const handleVolume = () => {
+const handleVolume = (e) => {
   volume_show.innerText = volume_bar.value;
   audio.volume = volume_bar.value / 100;
+};
+
+const handleLike = (e) => {
+  fetch(`/api/musics/${id}/like`, { method: "POST" });
+  if (like_icon.dataset.id === "true") {
+    like_icon.classList.remove("far");
+    like_icon.classList.add("fas");
+    like_icon.dataset.id = "false";
+  } else {
+    like_icon.classList.remove("fas");
+    like_icon.classList.add("far");
+    like_icon.dataset.id = "true";
+  }
 };
 
 play.addEventListener("click", handlePlay);
@@ -41,3 +55,4 @@ window.addEventListener("load", (e) => {
   audio.volume = 0.5;
 });
 volume_bar.addEventListener("input", handleVolume);
+like_icon.addEventListener("click", handleLike);

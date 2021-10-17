@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   location: String,
   musics: [{ type: mongoose.Schema.Types.ObjectId, ref: "music" }],
   playlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "music" }],
+  likemusic: [{ type: mongoose.Schema.Types.ObjectId, ref: "music" }],
 });
 
 userSchema.pre("save", async function () {

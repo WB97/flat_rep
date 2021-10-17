@@ -33,16 +33,20 @@ export const homepageMusics = async (req, res) => {
 };
 
 export const playMusic = async (req, res) => {
+  const { id } = req.params;
   let user;
   let _playlistData;
+  let check;
   if (req.session.user) {
     const { _id } = req.session.user;
     user = await User.findById(_id).populate("playlist");
     _playlistData = playlistData(user.playlist);
+    check = user.likemusic.includes(id);
+    // if (check) {
+    //   const likemusic_id = 1;
+    // }
   }
-  const { id } = req.params;
   const music = await (await Music.findById(id)).populate("owner");
-
   const musicData = nodeID3Read(music.fileUrl);
   const base64 = new Buffer.from(musicData.image.imageBuffer).toString(
     "base64"
@@ -58,6 +62,7 @@ export const playMusic = async (req, res) => {
     musicData,
     _playlistData,
     base64,
+    check,
   });
 };
 
@@ -187,6 +192,36 @@ export const deletePlaylist = async (req, res) => {
     }
   );
   await user.save();
-  console.log(user);
   return res.sendStatus(200);
+};
+
+export const likeMusic = async (req, res) => {
+  const { id } = req.params;
+  const music = await Music.findById(id);
+  if (req.session.loggedIn === true) {
+    const { _id } = req.session.user;
+    const user = await User.findById(_id);
+    const check = user.likemusic.includes(id);
+    if (check) {
+      const user = await User.findOneAndUpdate(
+        { likemusic: id },
+        {
+          $pull: {
+            likemusic: id,
+          },
+        }
+      );
+      music.like = music.like - 1;
+      await music.save();
+      await user.save();
+      return res.sendStatus(200);
+    }
+    music.like = music.like + 1;
+    user.likemusic.push(id);
+    await music.save();
+    await user.save();
+    return res.sendStatus(200);
+  }
+  return res.sendStatus(401);
+  // return res.sendStatus(200);
 };

@@ -1,8 +1,6 @@
 extends base.pug
 include mixins/music.pug
 include mixins/playlist.pug
-block weather
-    span.weather
 block content
     div.chart_text All music
     ul.video-grid
@@ -18,5 +16,4 @@ block content
         else
             span.empty_message Music not found.
 block scripts
-    script(src="/static/js/weather.js")
     script(src="/static/js/home.js")

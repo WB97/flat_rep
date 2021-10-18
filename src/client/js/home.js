@@ -1,11 +1,13 @@
-const videoGrid = document.querySelector(".video-grid");
+const videoGrid = document.querySelectorAll(".video-grid");
 
 const handleRLWheel = (e) => {
-  videoGrid.scrollBy({
+  e.target.scrollBy({
     left: e.deltaY < 0 ? -150 : 150,
     behavior: "smooth",
   });
-  console.log(e.deltaY);
+  // console.log();
 };
 
-videoGrid.addEventListener("wheel", handleRLWheel);
+for (let i = 0; i < videoGrid.length; i++) {
+  videoGrid[i].addEventListener("wheel", handleRLWheel);
+}

@@ -157,7 +157,7 @@ export const search = async (req, res) => {
   let musics = [];
   if (keyword) {
     musics = await Music.find({
-      name: {
+      title: {
         $regex: new RegExp(keyword, "i"),
       },
     }).populate("owner");

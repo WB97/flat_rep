@@ -1,4 +1,100 @@
+.grid_cover {
+  position: relative;
+}
+.video-grid {
+  display: flex;
+  height: 325px;
+  gap: 50px;
+  overflow: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: black;
+  }
+  .music_main {
+    margin-top: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    &:hover {
+      margin-top: 0;
+    }
+  }
+  .music_title,
+  .music_artist {
+    max-width: 150;
+  }
+}
+.pre_btn,
+.next_btn {
+  top: 82px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.pre_btn {
+  left: -65px;
+}
+.next_btn {
+  right: -65px;
+}
+
 .chart_text {
   font-size: 40px;
   margin: 50px 0 30px 0;
+}
+.chart_cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  margin-bottom: 10%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  .chart-grid {
+    width: 95%;
+    height: 700px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: black;
+    }
+    .music_main {
+      display: flex;
+      align-items: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      &:hover {
+        margin-left: 30px;
+      }
+      #track_image {
+        width: 100px;
+        height: 100px;
+      }
+      .music_title,
+      .music_artist {
+        font-size: 22px;
+      }
+      .music_title {
+        margin-left: 10px;
+      }
+    }
+  }
 }

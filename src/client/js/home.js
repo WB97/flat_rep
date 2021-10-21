@@ -1,13 +1,24 @@
-const videoGrid = document.querySelectorAll(".video-grid");
+const videoGrid = document.querySelector(".video-grid");
+const pre_btn = document.querySelector(".pre_btn");
+const next_btn = document.querySelector(".next_btn");
 
-const handleRLWheel = (e) => {
-  e.target.scrollBy({
-    left: e.deltaY < 0 ? -150 : 150,
-    behavior: "smooth",
-  });
-  // console.log();
+const handleLeft = (e) => {
+  if (videoGrid.scrollLeft > 0) {
+    videoGrid.scrollBy({
+      left: -300,
+      behavior: "smooth",
+    });
+  }
+  // console.log(videoGrid.scrollLeft);
+};
+const handleRight = (e) => {
+  if (videoGrid.scrollLeft < videoGrid.scrollWidth) {
+    videoGrid.scrollBy({
+      left: 300,
+      behavior: "smooth",
+    });
+  }
 };
 
-for (let i = 0; i < videoGrid.length; i++) {
-  videoGrid[i].addEventListener("wheel", handleRLWheel);
-}
+pre_btn.addEventListener("click", handleLeft);
+next_btn.addEventListener("click", handleRight);

@@ -2,25 +2,6 @@
   margin-bottom: 50px;
   font-size: 18px;
 }
-.video-grid {
-  display: flex;
-  height: 215px;
-  gap: 50px;
-  overflow: auto;
-  overflow-y: hidden;
-  &::-webkit-scrollbar {
-    height: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: black;
-  }
-  div {
-    max-width: 150px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-}
 .auth-switch {
   text-align: auto;
   margin-top: 20px;
@@ -39,10 +20,12 @@
   width: 150px;
   width: 150px;
   border-radius: 20%;
+  transition: all 0.4s ease;
 }
 
 #playpage_track_image {
   width: 300px;
   width: 300px;
   border-radius: 15px;
+  transition: all 0.4 ease;
 }

@@ -3,17 +3,20 @@ include mixins/music.pug
 include mixins/playlist.pug
 block content
     div.chart_text All music
-    ul.video-grid
-        each music in _allMusic
-            +musicList(music)
-        else
-            span.empty_message Music not found.
-    hr
+    div.grid_cover
+        i.fas.fa-chevron-left.pre_btn
+        i.fas.fa-chevron-right.next_btn
+        div.video-grid
+            each music in _allMusic
+                +musicList(music)
+            else
+                span.empty_message Music not found.
     div.chart_text Music chart
-    ul.video-grid
-        each music in _allChartMusric
-            +musicList(music)
-        else
-            span.empty_message Music not found.
+    div.chart_cover
+        ul.chart-grid
+            each music in _allChartMusric
+                +chartList(music)
+            else
+                span.empty_message Music not found.
 block scripts
     script(src="/static/js/home.js")

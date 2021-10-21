@@ -1,7 +1,7 @@
 mixin playList2(music)
     a(href=`/musics/${music._id}`).playlist_music_main
         div.playlist_wrap
-            img(src=music.img).playlist_track_image
+            //- img(src=music.img).playlist_track_image
             div.title_artist-wrap
                 div.playlist_music_title=music.title
                 div.playlist_music_artist=music.artist

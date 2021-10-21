@@ -26,12 +26,8 @@ const handlePlaylistPlay = (e) => {
         playlist_audio[i].pause();
       }
     }
-    // e.target.classList.remove("fa-play-circle");
-    // e.target.classList.add("fa-pause-circle");
   } else {
     audio.pause();
-    // e.target.classList.remove("fa-pause-circle");
-    // e.target.classList.add("fa-play-circle");
   }
 };
 

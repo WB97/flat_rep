@@ -3,6 +3,7 @@ import {
   pushPlaylist,
   deletePlaylist,
   likeMusic,
+  commentMusic,
 } from "../controllers/musicController.js";
 import { protectorMiddleware } from "../middlewares.js";
 
@@ -17,5 +18,8 @@ apiRouter
 apiRouter
   .all(protectorMiddleware)
   .post("/musics/:id([0-9a-f]{24})/like", likeMusic);
+apiRouter
+  .all(protectorMiddleware)
+  .post("/musics/:id([0-9a-f]{24})/comment", commentMusic);
 
 export default apiRouter;

@@ -15,7 +15,6 @@ block content
                     i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
                     input(type="range", min="0", max="100", value="50")#volume_bar
 
-
             div.top
                 div.title_artist_box
                     p#name #{musicData.title}
@@ -37,10 +36,16 @@ block content
 
     if loggedInUser._id==music.owner._id
         a(href=`${music.id}/remove`) Delete Music
+    hr
+    section#comment
+        if loggedIn
+            form(data-Id=music._id).comment_form
+                textarea(cols="30", rows="10").comment_text
+                button Submit
+            
 block scripts
     script(src="/static/js/musicPlayer.js")
-
-
+    script(src="/static/js/commentSection.js")
 
     //- div
     //-     p=music.artist

@@ -1,129 +1,120 @@
-body{
-    background-color:gray;
+.formlogin {
+  background-color: #3c3c3c;
+  height: 500px;
+  width: 100%;
 }
-main{
-    font-weight:bold;
+input {
+  font-size: 30px;
+  color: black;
 }
-.formlogin{
-    background-color: #3c3c3c;
-    height: 500px;
-    width: 100%;
-}
-input{
-    font-size: 30px;
-    color:black;
-}
-.id{
-    &::placeholder{
+.id {
+  &::placeholder {
     color: gray;
     margin-top: 10px;
-    }
+  }
 }
-.pw{
-    &::placeholder{
+.pw {
+  &::placeholder {
     color: gray;
     margin-top: 10px;
-    }
+  }
 }
-.login{
-    color: white;
-    position: relative;
-    margin-top: 20px;
-    top: 10%;
+.login {
+  color: white;
+  position: relative;
+  margin-top: 20px;
+  top: 10%;
 }
-.swi{
-    position: relative;
-    top:25%
+.swi {
+  position: relative;
+  top: 25%;
 }
-.word{
-    font-size: 30px;
-    margin-bottom: 10px;
+.word {
+  font-size: 30px;
+  margin-bottom: 10px;
 }
-a.word2{
-    margin-top: 10px;
+a.word2 {
+  margin-top: 10px;
 }
-.qwe{
-    font-size: 30px;
-    margin-bottom: 10px;
-    
+.qwe {
+  font-size: 30px;
+  margin-bottom: 10px;
 }
-.qwer{
-    position: relative;
-    top: 60%;
-    left: 70%;
+.qwer {
+  position: relative;
+  top: 60%;
+  left: 70%;
 }
-.qweq{
-    width: 70%;
-    height: 50%;
+.qweq {
+  width: 70%;
+  height: 50%;
 }
-.editp{
-    margin-bottom: 10px;
-    width: 60%;
+.editp {
+  margin-bottom: 10px;
+  width: 60%;
 }
-.editb{
-    position: relative;
-    left: 70%;
-    top: 25%;
-}
-
-
-.firstleft{
-    width: 40%;
-    margin-left: 7%;
-    margin-bottom: 3%;
-    padding: 10px;
-    font-size: 40px;
-    margin-top: 10%;
+.editb {
+  position: relative;
+  left: 70%;
+  top: 25%;
 }
 
-.firstright{
-    width: 40%;
-    margin-left: 7%;
-    margin-bottom: 3%;
-    padding: 10px;
-    font-size: 40px;
-    margin-top: 10%;
+.firstleft {
+  width: 40%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  padding: 10px;
+  font-size: 40px;
+  margin-top: 10%;
 }
 
-.secondright{
-    width: 40%;
-    margin-left: 7%;
-    margin-bottom: 3%;
-    padding: 10px;
-    font-size: 40px;
+.firstright {
+  width: 40%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  padding: 10px;
+  font-size: 40px;
+  margin-top: 10%;
 }
 
-.secondleft{
-    width: 40%;
-    margin-left: 7%;
-    margin-bottom: 3%;
-    padding: 10px;
-    font-size: 40px;
+.secondright {
+  width: 40%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  padding: 10px;
+  font-size: 40px;
 }
 
-.lastright{
-    width: 40%;
-    margin-left: 7%;
-    margin-bottom: 3%;
-    padding: 10px;
-    font-size: 40px;
+.secondleft {
+  width: 40%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  padding: 10px;
+  font-size: 40px;
 }
 
-.lastleft{
-    width: 40%;
-    margin-left: 7%;
-    margin-bottom: 3%;
-    padding: 10px;
-    font-size: 40px;
+.lastright {
+  width: 40%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  padding: 10px;
+  font-size: 40px;
 }
 
-.joinform{
-    height: 50%;
+.lastleft {
+  width: 40%;
+  margin-left: 7%;
+  margin-bottom: 3%;
+  padding: 10px;
+  font-size: 40px;
 }
 
+.joinform {
+  height: 50%;
+}
 
-.joinbutton{
-width: 50%;
-margin-left: 25%;
-font-size: 40px;
+.joinbutton {
+  width: 50%;
+  margin-left: 25%;
+  font-size: 40px;
 }

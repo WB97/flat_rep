@@ -1,7 +1,7 @@
 header {
   padding: 20px 40px;
   .header_logo {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 48px;
   }
   ul {
@@ -20,7 +20,7 @@ header {
       font-size: 30px;
     }
     .header_btn {
-      background-color: white;
+      background-color: rgb(0, 0, 0);
       color: $bg;
       padding: 5px 10px;
       border-radius: 10px;

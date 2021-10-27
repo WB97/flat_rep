@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import "dotenv/config.js";
 import "./database/db.js";
 import "./models/Music.js";

@@ -226,3 +226,8 @@ export const likeMusic = async (req, res) => {
   return res.sendStatus(401);
   // return res.sendStatus(200);
 };
+
+export const commentMusic = (req, res) => {
+  console.log(req.body);
+  return res.end();
+};

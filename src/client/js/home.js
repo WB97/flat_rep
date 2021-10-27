@@ -5,7 +5,7 @@ const next_btn = document.querySelector(".next_btn");
 const handleLeft = (e) => {
   if (videoGrid.scrollLeft > 0) {
     videoGrid.scrollBy({
-      left: -300,
+      left: -500,
       behavior: "smooth",
     });
   }
@@ -14,7 +14,7 @@ const handleLeft = (e) => {
 const handleRight = (e) => {
   if (videoGrid.scrollLeft < videoGrid.scrollWidth) {
     videoGrid.scrollBy({
-      left: 300,
+      left: 500,
       behavior: "smooth",
     });
   }

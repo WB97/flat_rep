@@ -14,6 +14,8 @@ const main = document.querySelector(".main-player");
 const like_icon = document.querySelector(".like_icon");
 const duration_slider = document.querySelector("#duration_slider");
 const duration_text = document.querySelector(".duration_text");
+const commentform = document.querySelector(".comment_form");
+const commenttext = document.querySelector(".comment_text");
 
 let timer;
 let autoplay = 0;

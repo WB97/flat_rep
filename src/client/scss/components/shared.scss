@@ -16,10 +16,9 @@
   border-radius: 50%;
 }
 
-#track_image {
-  width: 150px;
-  width: 150px;
-  border-radius: 20%;
+.track_image {
+  width: 230px;
+  border: 1px solid black;
   transition: all 0.4s ease;
 }
 

@@ -7,11 +7,7 @@
   gap: 50px;
   overflow: auto;
   overflow-y: hidden;
-<<<<<<< HEAD
-  background: linear-gradient(136deg, #c5eafc 0%, #b85490 100%);
-=======
-  background-color: rgb(49, 159, 255);
->>>>>>> 78b802b1a8426794f2830352651b2512d6025aa5
+  background: linear-gradient(130deg, #ffffff, 80%, #8fc3ff);
   &::-webkit-scrollbar {
     height: 5px;
   }
@@ -71,7 +67,7 @@
   margin-bottom: 10%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  background: linear-gradient(136deg, #c5eafc 0%, #b85490 100%);
+  background: linear-gradient(130deg, #ffffff, 80%, #8fc3ff);
   .chart-grid {
     width: 95%;
     height: 700px;

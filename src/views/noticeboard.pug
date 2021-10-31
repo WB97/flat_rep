@@ -1,0 +1,15 @@
+extends base.pug
+include mixins/notice.pug
+
+block content
+    if loggedIn
+        a(href=`/noticeboard/${loggedInUser._id}/posting`)
+            span post
+        hr
+        section
+            ul
+                each notice in notices
+                    li
+                        +noticeList(notice)
+
+block scripts

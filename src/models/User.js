@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema({
   musics: [{ type: mongoose.Schema.Types.ObjectId, ref: "music" }],
   playlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "music" }],
   likemusic: [{ type: mongoose.Schema.Types.ObjectId, ref: "music" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
+  notice: [{ type: mongoose.Schema.Types.ObjectId, ref: "notice" }],
 });
 
 userSchema.pre("save", async function () {

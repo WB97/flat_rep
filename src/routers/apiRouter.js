@@ -4,7 +4,9 @@ import {
   deletePlaylist,
   likeMusic,
   commentMusic,
+  deleteComment,
 } from "../controllers/musicController.js";
+import { postPosting } from "../controllers/noticeboardController.js";
 import { protectorMiddleware } from "../middlewares.js";
 
 const apiRouter = express.Router();
@@ -21,5 +23,11 @@ apiRouter
 apiRouter
   .all(protectorMiddleware)
   .post("/musics/:id([0-9a-f]{24})/comment", commentMusic);
+apiRouter
+  .all(protectorMiddleware)
+  .post("/musics/:id([0-9a-f]{24})/deleteComment", deleteComment);
+apiRouter
+  .all(protectorMiddleware)
+  .post("/noticeboard/:id([0-9a-f]{24})/post", postPosting);
 
 export default apiRouter;

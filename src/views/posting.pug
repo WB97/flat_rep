@@ -1,0 +1,10 @@
+extends base.pug
+
+block content
+    form(data-id=loggedInUser._id).posting-form
+        textarea( cols="30", rows="10", required).posting-title
+        textarea(cols="30", rows="10", required).posting-maintext
+        button.posting-btn Submit
+
+block scripts
+    script(src="/static/js/posting.js")

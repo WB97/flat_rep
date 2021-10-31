@@ -3,7 +3,7 @@ include ../mixins/playlist.pug
 
 block content
     audio(src="/"+music.fileUrl)#audio_page
-    div.main-player(data-Id=music._id)
+    div.main-player(data-Id=music._id, data-user=loggedInUser.name)
         div.main
             img(src=`data:image/jpeg;base64,${base64}`)#bgImg
             if check
@@ -37,11 +37,21 @@ block content
     if loggedInUser._id==music.owner._id
         a(href=`${music.id}/remove`) Delete Music
     hr
-    section#comment
-        if loggedIn
-            form(data-Id=music._id).comment_form
-                textarea(cols="30", rows="10").comment_text
-                button Submit
+    if loggedIn
+        section.commentWrite-section
+            if loggedIn
+                form(data-Id=music._id).commentWrite_form
+                    textarea(cols="30", rows="10").commentWrite_textarea
+                    button Submit
+    div.comment_section
+        ul
+            each comment in music.comments.reverse()
+                li.comment_text(data-id=comment.id)
+                    div #{comment.text}
+                    div #{comment.ownerName}
+                    if loggedInUser._id==comment.owner
+                        i.fas.fa-times.delComment
+                    
             
 block scripts
     script(src="/static/js/musicPlayer.js")

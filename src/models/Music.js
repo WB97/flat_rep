@@ -8,6 +8,7 @@ const musicSchema = new mongoose.Schema({
   hashtags: [{ type: String }],
   like: { type: Number, default: 0, require: true },
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "user" },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
 });
 
 musicSchema.static("formatHashtags", function (hashtags) {

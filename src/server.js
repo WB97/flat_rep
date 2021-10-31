@@ -6,6 +6,7 @@ import rootRouter from "./routers/rootRouter.js";
 import userRouter from "./routers/userRouter.js";
 import musicRouter from "./routers/musicRouter.js";
 import apiRouter from "./routers/apiRouter.js";
+import noticeboardRouter from "./routers/noticeboardRouter.js";
 import { localsMiddleware } from "./middlewares.js";
 
 const app = express();
@@ -35,5 +36,6 @@ app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/musics", musicRouter);
 app.use("/api", apiRouter);
+app.use("/noticeboard", noticeboardRouter);
 
 export default app;

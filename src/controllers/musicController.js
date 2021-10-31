@@ -1,5 +1,6 @@
 import Music from "../models/Music.js";
 import User from "../models/User.js";
+import Comment from "../models/Comment";
 import mongoose from "mongoose";
 import {
   playlistData,
@@ -7,6 +8,7 @@ import {
   allMusic,
   nodeID3Read,
 } from "./loadPlaylist.js";
+import { async } from "regenerator-runtime";
 
 export const homepageMusics = async (req, res) => {
   let user;
@@ -49,7 +51,7 @@ export const playMusic = async (req, res) => {
     _playlistData = playlistData(user.playlist);
     check = user.likemusic.includes(id);
   }
-  const music = await (await Music.findById(id)).populate("owner");
+  const music = await Music.findById(id).populate("owner").populate("comments");
   const musicData = nodeID3Read(music.fileUrl);
   if (musicData.image) {
     base64 = new Buffer.from(musicData.image.imageBuffer).toString("base64");
@@ -227,7 +229,51 @@ export const likeMusic = async (req, res) => {
   // return res.sendStatus(200);
 };
 
-export const commentMusic = (req, res) => {
-  console.log(req.body);
-  return res.end();
+export const commentMusic = async (req, res) => {
+  const {
+    session: { user },
+    body: { text },
+    params: { id },
+  } = req;
+  const music = await Music.findById(id);
+  const dbuser = await User.findById(user._id);
+  if (!music) {
+    return res.sendStatus(404);
+  }
+  const comment = await Comment.create({
+    text,
+    owner: user._id,
+    ownerName: user.name,
+    music: id,
+  });
+  music.comments.push(comment._id);
+  music.save();
+  dbuser.comments.push(comment._id);
+  dbuser.save();
+  return res.status(201).json({ newCommentId: comment._id });
+};
+
+export const deleteComment = async (req, res) => {
+  const { id } = req.params;
+  const id2 = mongoose.Types.ObjectId(id);
+  const user = await User.findOneAndUpdate(
+    { comments: id2 },
+    {
+      $pull: {
+        comments: id2,
+      },
+    }
+  ).populate("comments");
+  await user.save();
+  const music = await Music.findOneAndUpdate(
+    { comments: id2 },
+    {
+      $pull: {
+        comments: id2,
+      },
+    }
+  );
+  await music.save();
+  await Comment.findByIdAndDelete(id);
+  return res.sendStatus(200);
 };

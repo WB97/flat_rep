@@ -10,6 +10,7 @@ module.exports = {
     home: "./src/client/js/home.js",
     commentSection: "./src/client/js/commentSection.js",
     posting: "./src/client/js/posting.js",
+    noticeBoard: "./src/client/js/noticeBoard.js",
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -1,4 +1,12 @@
 import User from "../models/User.js";
+import Music from "../models/Music.js";
+import mongoose from "mongoose";
+import {
+  playlistData,
+  uploadData,
+  allMusic,
+  nodeID3Read,
+} from "./loadPlaylist.js";
 import Notice from "../models/Noticeboard.js";
 
 export const noticeboard = async (req, res) => {
@@ -9,9 +17,15 @@ export const noticeboard = async (req, res) => {
     return res.render("noticeboard", { pageTitle: "Notice board", notices });
   }
   const { _id } = req.session.user;
-  const user = await User.findById(_id);
-  // console.log(_id);
-  return res.render("noticeboard", { pageTitle: "Notice board", notices });
+  const pageNum = Math.ceil(notices.length / 5);
+  const user = await User.findById(_id).populate("playlist");
+  const _playlistData = playlistData(user.playlist);
+  const check = user.likemusic.includes(id);
+  return res.render("noticeboard", {
+    pageTitle: "Notice board",
+    notices,
+    pageNum,
+  });
 };
 
 export const getPosting = async (req, res) => {
@@ -23,17 +37,98 @@ export const postPosting = async (req, res) => {
     session: { user },
     body: { title, mainText },
   } = req;
+  const len = await Notice.find({});
+  const len2 = len.length + 1;
   const dbuser = await User.findById(user._id);
   const notice = await Notice.create({
+    num: len2,
     title,
     mainText,
     owner: user._id,
     ownerName: user.name,
   });
   await notice.save();
+  dbuser.notices.push(notice._id);
+  await dbuser.save();
   return res.sendStatus(201);
 };
 
-export const getNotice = (req, res) => {
-  return res.send("getNotice");
+export const getNotice = async (req, res) => {
+  const { id } = req.params;
+  const notice = await Notice.findById(id).populate("owner");
+  if (!req.session.user) {
+    return res.render("notice", { pageTitle: "notice", notice });
+  } else {
+    const { _id } = req.session.user;
+    const user = await User.findById(_id).populate("playlist");
+    const _playlistData = playlistData(user.playlist);
+    return res.render("notice", {
+      pageTitle: "notice",
+      notice,
+      user,
+      _playlistData,
+    });
+  }
+};
+
+export const delNotice = async (req, res) => {
+  const { id } = req.params;
+  const {
+    user: { _id },
+  } = req.session;
+  const notice = await Notice.findById(id);
+  if (String(notice.owner) !== String(_id)) {
+    return res.status(403).redirect("/");
+  }
+  await Notice.findByIdAndDelete(id);
+  return res.redirect("/");
+};
+
+export const pageMove = async (req, res) => {
+  const { page } = req.params;
+  const intPage = parseInt(page) * 5;
+  const notices = await Notice.find({});
+  let save = [];
+  const pageNum = Math.ceil(notices.length / 5);
+  if (!req.session.user) {
+    for (let i = intPage; i < notices.length; ++i) {
+      save.push(notices[i]);
+      if (i >= intPage + 4) {
+        console.log(save);
+        return res.render("noticeboard", {
+          pageTitle: "Notice board",
+          save,
+          pageNum,
+        });
+      }
+    }
+    return res.render("noticeboard", {
+      pageTitle: "Notice board",
+      save,
+      pageNum,
+    });
+  } else {
+    const { _id } = req.session.user;
+    const user = await User.findById(_id).populate("playlist");
+    const _playlistData = playlistData(user.playlist);
+    for (let i = intPage; i < notices.length; ++i) {
+      save.push(notices[i]);
+      if (i >= intPage + 4) {
+        return res.render("noticeboard", {
+          pageTitle: "Notice board",
+          save,
+          user,
+          pageNum,
+          _playlistData,
+        });
+      }
+    }
+    return res.render("noticeboard", {
+      pageTitle: "Notice board",
+      save,
+      user,
+      pageNum,
+      _playlistData,
+    });
+  }
 };

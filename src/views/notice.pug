@@ -1,0 +1,11 @@
+extends base.pug
+include mixins/playlist.pug
+block content
+    section.notice_title
+        | #{notice.title}
+    section.notice_mainText
+        | #{notice.mainText}
+    if loggedInUser._id==notice.owner._id
+        section.notice_delete
+            a(href=`${notice._id}/remove`) Delete notice
+block scripts

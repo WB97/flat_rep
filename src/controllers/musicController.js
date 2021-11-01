@@ -8,7 +8,6 @@ import {
   allMusic,
   nodeID3Read,
 } from "./loadPlaylist.js";
-import { async } from "regenerator-runtime";
 
 export const homepageMusics = async (req, res) => {
   let user;
@@ -85,7 +84,6 @@ export const postUpload = async (req, res) => {
     },
   } = req;
   const saveMusicData = nodeID3Read(file.path);
-  // base64 = new Buffer.from(saveMusicData.image.imageBuffer).toString("base64");
   let strHashtags = String(hashtags);
   try {
     const newMusic = await Music.create({

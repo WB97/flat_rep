@@ -41,14 +41,16 @@ block content
         section.commentWrite-section
             if loggedIn
                 form(data-Id=music._id).commentWrite_form
-                    textarea(cols="30", rows="10").commentWrite_textarea
+                    input.commentWrite_textarea
+                    br
                     button Submit
     div.comment_section
         ul
             each comment in music.comments.reverse()
                 li.comment_text(data-id=comment.id)
-                    div #{comment.text}
-                    div #{comment.ownerName}
+                    span.comment_owner #{comment.ownerName}
+                    span.comment_text #{comment.text}
+                    hr
                     if loggedInUser._id==comment.owner
                         i.fas.fa-times.delComment
                     

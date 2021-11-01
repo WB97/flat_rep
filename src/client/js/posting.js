@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
     },
     body: JSON.stringify({ title, mainText }),
   });
-  location.href = "/noticeboard";
+  location.href = "/noticeboard/0";
 };
 
 postingBtn.addEventListener("click", handleSubmit);

@@ -8,15 +8,19 @@ const addComment = (text, id, user) => {
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "comment_text";
-  const div1 = document.createElement("div");
-  const div2 = document.createElement("div");
+  const div1 = document.createElement("span");
+  const div2 = document.createElement("span");
   const delIcon = document.createElement("i");
+  const hr = document.createElement("hr");
   delIcon.className = "fas fa-times";
-  div1.innerText = ` ${text}`;
-  div2.innerText = ` ${user}`;
+  div1.className = "comment_owner";
+  div2.className = "comment_text";
+  div1.innerText = `${user}`;
+  div2.innerText = `${text}`;
   newComment.appendChild(div1);
   newComment.appendChild(div2);
   newComment.appendChild(delIcon);
+  newComment.appendChild(hr);
   musicComment.prepend(newComment);
 };
 

@@ -74,9 +74,7 @@ window.onload = function () {
   duration_slider.addEventListener("change", handleAudioSeek);
   playbtn_section.addEventListener("click", handlePlay);
   audio.addEventListener("play", handlePushPlaylist);
-  window.addEventListener("load", (e) => {
-    audio.volume = 0.5;
-  });
+  audio.volume = 0.3;
   volume_bar.addEventListener("input", handleVolume);
   like_icon.addEventListener("click", handleLike);
 };

@@ -18,11 +18,14 @@
 @import "./screens/edit-profile.scss";
 @import "./screens/sidebar.scss";
 @import "./screens/notice.scss";
+@import "./screens/login.scss";
 @import "dsf.scss";
 
 body {
   font-family: "Noto Sans KR", sans-serif;
-  // background: linear-gradient(90deg, #ffffff, 80%, #8fc3ff);
+  background: #f6f6f6;
+  color: #474a59;
+  // background: linear-gradient(45deg, #6ec8f8, #abf7e5);
 }
 
 header {
@@ -32,8 +35,12 @@ header {
 //Defaults
 
 a {
-  color: rgb(0, 0, 0);
+  color: #474a59;
   text-decoration: none;
+}
+
+i {
+  color: #474a59;
 }
 
 main {
@@ -41,6 +48,11 @@ main {
   margin: 0 auto;
   margin-top: 50px;
   position: relative;
+}
+
+input {
+  font-size: 30px;
+  color: black;
 }
 
 hr {

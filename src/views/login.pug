@@ -4,11 +4,20 @@ block content
     block sidebar
     if errorMessage
         span=errorMessage
-    form(method="POST")                
-        input(placeholder="Username",name="username", type="text", required)
-        input(placeholder="Password",name="password", type="password", required)
-        input(type="submit", value="Login")
-        div.auth-switch
-            span Don't have an account? 
-                a(href="/join") Create in now
+    form(method="POST").login-form
+        div.login-top
+            div Login
+        div.login-mid
+            article
+                div Username
+                input(name="username", type="text", required).username-input
+            article
+                div Password
+                input(name="password", type="password", required).password-input
+        hr
+        div.login-bottom
+            input(type="submit", value="Login").submit-btn
+            div.auth-switch
+                span Don't have an account? 
+                    a(href="/join") Create in now
         

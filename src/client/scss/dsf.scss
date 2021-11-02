@@ -6,10 +6,6 @@ main {
   height: 500px;
   width: 100%;
 }
-input {
-  font-size: 30px;
-  color: black;
-}
 .id {
   &::placeholder {
     color: gray;

@@ -7,10 +7,11 @@ block content
         i.fas.fa-chevron-left.pre_btn
         i.fas.fa-chevron-right.next_btn
         div.video-grid
-            each music in _allMusic
-                +musicList(music)
-            else
-                span.empty_message Music not found.
+            article.second
+                each music in _allMusic
+                    +musicList(music)
+                else
+                    span.empty_message Music not found.
     div.chart_text Music chart
     div.chart_cover
         ul.chart-grid

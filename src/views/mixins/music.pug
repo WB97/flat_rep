@@ -1,9 +1,9 @@
 mixin musicList(music)
     a(href=`/musics/${music._id}`)
-        div.music_main
-            img(src=music.img).track_image
-            div.music_title=music.title
-            div.music_artist=music.artist
+        article.music_main
+                img(src=music.img).track_image
+                div.music_title=music.title
+                div.music_artist=music.artist
 
 mixin chartList(music)
     a(href=`/musics/${music._id}`)

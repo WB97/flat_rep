@@ -11,9 +11,9 @@ block content
             else
                 i.far.fa-heart.like_icon(data-Id="true") &nbsp;#{music.like}
             div#volume
-                    p#volume_show 50
+                    p#volume_show 30
                     i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
-                    input(type="range", min="0", max="100", value="50")#volume_bar
+                    input(type="range", min="0", max="100", value="30")#volume_bar
 
             div.top
                 div.title_artist_box
@@ -48,7 +48,7 @@ block content
         ul
             each comment in music.comments.reverse()
                 li.comment_text(data-id=comment.id)
-                    span.comment_owner #{comment.ownerName}
+                    a(href=`/users/${comment.owner}`).comment_owner #{comment.ownerName}
                     span.comment_text #{comment.text}
                     hr
                     if loggedInUser._id==comment.owner

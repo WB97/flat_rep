@@ -6,10 +6,15 @@ block content
     div.profile_data
         img(src="/"+user.avatarUrl).avatar
         div #{user.name}
-    div.video-grid
-        each uploadMusic in _uploadData
-            +musicList(uploadMusic)
-        else
-            span.empty_message Music not found.
-            span.empty_message Music not found.
-            
+    div.grid_cover
+        i.fas.fa-chevron-left.pre_btn
+        i.fas.fa-chevron-right.next_btn
+        div.video-grid
+            article.second
+                each uploadMusic in _uploadData
+                    +musicList(uploadMusic)
+                else
+                    span.empty_message Music not found.
+                    span.empty_message Music not found.
+block scripts
+    script(src="/static/js/home.js")

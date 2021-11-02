@@ -7,7 +7,8 @@
   gap: 50px;
   overflow: auto;
   overflow-y: hidden;
-  background: linear-gradient(130deg, #ffffff, 80%, #8fc3ff);
+  border-bottom: 1px solid rgb(141, 141, 141);
+  // background: linear-gradient(130deg, #ffffff, 80%, #8fc3ff);
   &::-webkit-scrollbar {
     height: 5px;
   }
@@ -58,15 +59,13 @@
   margin: 50px 0 30px 0;
 }
 .chart_cover {
-  background-color: rgb(49, 159, 255);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 800px;
   margin-bottom: 10%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  background: linear-gradient(130deg, #ffffff, 80%, #8fc3ff);
+  border: 1px solid rgb(141, 141, 141);
+  // background: linear-gradient(130deg, #ffffff, 80%, #8fc3ff);
   .chart-grid {
     width: 95%;
     height: 700px;

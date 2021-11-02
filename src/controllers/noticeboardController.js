@@ -20,11 +20,12 @@ export const noticeboard = async (req, res) => {
   const pageNum = Math.ceil(notices.length / 5);
   const user = await User.findById(_id).populate("playlist");
   const _playlistData = playlistData(user.playlist);
-  const check = user.likemusic.includes(id);
   return res.render("noticeboard", {
     pageTitle: "Notice board",
+    user,
     notices,
     pageNum,
+    _playlistData,
   });
 };
 
@@ -81,7 +82,7 @@ export const delNotice = async (req, res) => {
     return res.status(403).redirect("/");
   }
   await Notice.findByIdAndDelete(id);
-  return res.redirect("/");
+  return res.redirect("/noticeboard/0");
 };
 
 export const pageMove = async (req, res) => {

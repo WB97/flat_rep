@@ -3,18 +3,18 @@ include mixins/noticeList.pug
 include mixins/playlist.pug
 
 block content
-    if loggedIn
-        a(href=`/noticeboard/${loggedInUser._id}/posting`)
-            span post
-        hr
     section.notice-wrap
         ul
             each notice in save
                 li.notice-list
                     +noticeList(notice)
+    if loggedIn
+        a(href=`/noticeboard/${loggedInUser._id}/posting`).postBtn
+            span Post
+    br
     -for(i=1;i<=pageNum;i++)
         a(href=`/noticeboard/${i-1}`)
-            span(data-num=i) | #{i} 
+            span(data-num=i) #{i} |  
 
 block scripts
     script(src="/static/js/noticeBoard.js")

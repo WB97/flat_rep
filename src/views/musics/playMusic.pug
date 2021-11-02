@@ -35,8 +35,8 @@ block content
                 span.duration_text 00:00
 
     if loggedInUser._id==music.owner._id
-        a(href=`${music.id}/remove`) Delete Music
-    hr
+        section.deleteSec
+            a(href=`${music.id}/remove`).deleteBtn Delete Music
     if loggedIn
         section.commentWrite-section
             if loggedIn

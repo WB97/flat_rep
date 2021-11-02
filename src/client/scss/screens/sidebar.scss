@@ -8,11 +8,11 @@
   width: 60px;
   top: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(0, 0, 0, 0.8);
   padding: 6px 0px;
   font-size: 20px;
   transition: all 0.5s ease;
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(0, 0, 0);
   p {
     height: 50px;
   }
@@ -37,15 +37,6 @@
         font-size: 30px;
       }
     }
-    .playlist_text {
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-      top: 200px;
-      right: 5px;
-      font-size: 16px;
-      transition: all 0.5s ease;
-    }
     .profile_link {
       display: flex;
       align-items: center;
@@ -53,130 +44,76 @@
       position: relative;
       height: 135px;
       width: 100%;
-      border-radius: 25px;
       transition: all 0.4s ease;
-      background: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid rgb(255, 255, 255);
+      margin-top: 20px;
+      // background: rgba(255, 255, 255, 0.7);
       a {
-        color: black;
         transition: all 0.4s ease;
+        &:hover {
+          color: rgb(124, 124, 124);
+        }
       }
       .login_btn {
         font-size: 45px;
         left: 100px;
-      }
-      &:hover {
-        background: rgba(0, 0, 0, 0.7);
-        a {
+        &:hover {
           color: white;
         }
       }
       .small_profile {
         display: flex;
-        align-items: center;
         width: 100%;
         height: 100%;
+        border-top: 1px solid white;
         .small_profile_edit,
         .small_profile_upload {
           position: absolute;
-          top: 10px;
-          right: 15px;
-          font-size: 25px;
+          right: 10px;
+          margin-top: 6px;
+          font-size: 28px;
+          transition: all 0.4s ease;
         }
         .small_profile_upload {
-          top: 50px;
-          right: 18px;
-          font-size: 26px;
+          right: 50px;
         }
-
-        .small_profile_img {
-          width: 75px;
-          height: 75px;
-          border-radius: 50%;
-          margin-left: 5px;
-        }
-        .small_profile_description {
-          height: 40px;
+        .small_profile_wrap {
           display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          margin-left: 15px;
-          .small_profile_name {
-            font-weight: 500;
+          align-items: center;
+          .small_profile_img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            margin-left: 5px;
           }
-          .small_profile_text {
-            font-size: 15px;
+          .small_profile_description {
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 15px;
+            margin-top: 24px;
+            .small_profile_name {
+              font-weight: 500;
+            }
+            .small_profile_text {
+              font-size: 15px;
+            }
           }
         }
       }
     }
   }
-
-  // middle
-  // .menu_middle {
-  //   opacity: 0;
-  //   pointer-events: none;
-  //   width: 100%;
-  //   height: 77%;
-  //   padding: 0px 14px 0px 14px;
-  //   border-top: 1px solid #fff;
-  //   position: relative;
-  //   overflow: auto;
-  //   &::-webkit-scrollbar {
-  //     height: 5px;
-  //   }
-  //   &::-webkit-scrollbar-thumb {
-  //     background: black;
-  //   }
-  //   .playlist_list {
-  //     position: relative;
-  //     width: 90%;
-  //     // margin: 12px auto;
-  //   }
-  //   i {
-  //     font-size: 25px;
-  //     position: absolute;
-  //     top: 70px;
-  //     right: 10px;
-  //     cursor: pointer;
-  //     color: black;
-  //   }
-  //   .playlist_playbtn {
-  //     right: 50px;
-  //   }
-  //   .playlist_wrap {
-  //     position: relative;
-  //     max-height: 100px;
-  //     transition: all 0.5s ease;
-  //     width: 100%;
-  //     border-radius: 20px;
-  //     div {
-  //       text-overflow: ellipsis;
-  //       white-space: nowrap;
-  //       overflow: hidden;
-  //       font-weight: 600;
-  //     }
-  //     &:hover {
-  //       color: black;
-  //       background-color: #fff;
-  //     }
-  //     .title_artist-wrap {
-  //       position: absolute;
-  //       width: 50%;
-  //       height: 65px;
-  //       top: 0;
-  //       left: 105px;
-  //       display: flex;
-  //       flex-direction: column;
-  //       justify-content: space-around;
-  //     }
-  //   }
-  // }
+  .menu_middle {
+    opacity: 0;
+    pointer-events: none;
+    .playlist_list {
+      i {
+        color: white;
+      }
+    }
+  }
 }
-// .playlist_track_image {
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 20px;
-// }
 
 .active {
   width: 300px;
@@ -205,6 +142,7 @@
   top: 5px;
   right: 15px;
   font-size: 35px;
+  color: white;
 }
 #logout {
   opacity: 0;
@@ -215,6 +153,6 @@
   font-size: 30px;
   transition: all 0.5s ease;
   &:hover {
-    color: black;
+    color: rgb(138, 138, 138);
   }
 }

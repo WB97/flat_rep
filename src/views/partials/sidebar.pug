@@ -9,18 +9,17 @@ div.sidebar
         div.profile_link
             if loggedIn
                 div.small_profile
-                    a(href="/users/edit")
-                        i.far.fa-edit.small_profile_edit
-                    a(href="/musics/upload")
-                        i.far.fa-caret-square-up.small_profile_upload
-                    a(href=`/users/${loggedInUser._id}`)
+                    a(href="/users/edit").small_profile_edit
+                        i.bx.bx-edit-alt
+                    a(href="/musics/upload").small_profile_upload
+                        i.fas.fa-file-upload
+                    a(href=`/users/${loggedInUser._id}`).small_profile_wrap
                         img(src="/"+loggedInUser.avatarUrl).small_profile_img
                         div.small_profile_description
                             div.small_profile_name JungWook
                             div.small_profile_text Front end Developer
             else
                 a(href="/login").login_btn Login
-        div.playlist_text Playlist
     div.menu_middle
         if _playlistData
             each listMusic in _playlistData

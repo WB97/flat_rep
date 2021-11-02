@@ -21,10 +21,12 @@
 @import "dsf.scss";
 
 body {
-  //background-color: black;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: linear-gradient(90deg, #ffffff, 80%, #8fc3ff);
+  font-family: "Noto Sans KR", sans-serif;
+  // background: linear-gradient(90deg, #ffffff, 80%, #8fc3ff);
+}
+
+header {
+  border-bottom: 2px solid #000;
 }
 
 //Defaults
@@ -35,14 +37,14 @@ a {
 }
 
 main {
-  max-width: 1500px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 50px;
+  position: relative;
 }
 
 hr {
-  border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
+  border: 1px solid rgba($color: #818181, $alpha: 0.5);
 }
 
 #bgimg {

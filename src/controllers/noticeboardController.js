@@ -11,7 +11,7 @@ import Notice from "../models/Noticeboard.js";
 
 export const noticeboard = async (req, res) => {
   const notices = await Notice.find({})
-    .sort({ createdAt: "desc" })
+    .sort({ createdAt: "asc" })
     .populate("owner");
   if (!req.session.user) {
     return res.render("noticeboard", { pageTitle: "Notice board", notices });
@@ -87,15 +87,15 @@ export const delNotice = async (req, res) => {
 
 export const pageMove = async (req, res) => {
   const { page } = req.params;
-  const intPage = parseInt(page) * 5;
-  const notices = await Notice.find({});
+  const intPage = parseInt(page) * 10;
+  const notices = await Notice.find({}).sort({ createdAt: -1 });
+  console.log(notices);
   let save = [];
-  const pageNum = Math.ceil(notices.length / 5);
+  const pageNum = Math.ceil(notices.length / 10);
   if (!req.session.user) {
     for (let i = intPage; i < notices.length; ++i) {
       save.push(notices[i]);
-      if (i >= intPage + 4) {
-        console.log(save);
+      if (i >= intPage + 9) {
         return res.render("noticeboard", {
           pageTitle: "Notice board",
           save,
@@ -114,7 +114,7 @@ export const pageMove = async (req, res) => {
     const _playlistData = playlistData(user.playlist);
     for (let i = intPage; i < notices.length; ++i) {
       save.push(notices[i]);
-      if (i >= intPage + 4) {
+      if (i >= intPage + 9) {
         return res.render("noticeboard", {
           pageTitle: "Notice board",
           save,

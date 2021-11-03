@@ -5,6 +5,26 @@ form {
   border: 1px solid rgba($color: rgb(0, 0, 0), $alpha: 0.3);
 }
 
+.posting-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .posting-title,
+  .posting-maintext {
+    resize: none;
+    font-size: 18px;
+    background: none;
+  }
+  .posting-title {
+    height: 50px;
+  }
+  .posting-btn {
+    position: relative;
+    width: 5%;
+    justify-self: flex-end;
+  }
+}
+
 // input {
 //   all: unset;
 //   padding: 10px 20px;

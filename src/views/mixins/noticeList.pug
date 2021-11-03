@@ -1,3 +1,5 @@
 mixin noticeList(notice)
     a(href=`/noticeboard/${notice._id}`)
         div=notice.title
+    a(href=`/users/${notice.owner}`)
+        div=notice.ownerName

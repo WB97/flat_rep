@@ -3,6 +3,8 @@ include mixins/playlist.pug
 block content
     section.notice_title
         | #{notice.title}
+        a(href=`/users/${notice.owner._id}`).notice_username
+            div=notice.ownerName
     section.notice_mainText
         | #{notice.mainText}
     if loggedInUser._id==notice.owner._id

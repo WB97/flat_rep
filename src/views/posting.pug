@@ -2,7 +2,9 @@ extends base.pug
 
 block content
     form(data-id=loggedInUser._id).posting-form
+        div Title
         textarea( cols="30", rows="10", required).posting-title
+        div Main text
         textarea(cols="30", rows="10", required).posting-maintext
         button.posting-btn Submit
 

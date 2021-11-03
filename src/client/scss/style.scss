@@ -19,6 +19,7 @@
 @import "./screens/sidebar.scss";
 @import "./screens/notice.scss";
 @import "./screens/login.scss";
+@import "./screens/join.scss";
 @import "dsf.scss";
 
 body {
@@ -30,6 +31,9 @@ body {
 
 header {
   border-bottom: 2px solid #000;
+  i {
+    color: #474a59;
+  }
 }
 
 //Defaults
@@ -37,10 +41,6 @@ header {
 a {
   color: #474a59;
   text-decoration: none;
-}
-
-i {
-  color: #474a59;
 }
 
 main {

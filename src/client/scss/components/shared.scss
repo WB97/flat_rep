@@ -19,10 +19,16 @@
   font-size: 28px;
   font-weight: 600;
 }
+.track_cd,
 .track_image {
   width: 230px;
   border: 1px solid black;
   transition: all 0.4s ease;
+}
+.track_cd {
+  height: 230px;
+  border: none;
+  font-size: 14.4em;
 }
 
 #playpage_track_image {

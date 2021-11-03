@@ -4,14 +4,31 @@ block content
     block sidebar
     if errorMessage
         span=errorMessage
-    form(method="POST")
-        input(placeholder="Email",name="email", type="email", required)
-        input(placeholder="Username",name="username", type="text", required)
-        input(placeholder="Password",name="password", type="password", required)
-        input(placeholder="Confirm Password",name="password2", type="password", required)
-        input(placeholder="Name",name="name", type="text", required)
-        input(placeholder="Location",name="location", type="text", required)
-        input(type="submit", value="Join")
-        div.auth-switch
-            span Already have an account?
-            a(href="/login") Log in now
+    form(method="POST").join-form
+        article.join-top
+            div Join
+        article.join-mid
+            article
+                div Email
+                input(name="email", type="email", required)
+            article
+                div Username
+                input(name="username", type="text", required)
+            article
+                div Password
+                input(name="password", type="password", required)
+            article
+                div Confirm Password
+                input(name="password2", type="password", required)
+            article
+                div Name
+                input(name="name", type="text", required)
+            article
+                div Location
+                input(name="location", type="text", required)
+        hr
+        article.join-bottom
+            input(type="submit", value="Join").join-submit
+            div
+                span Already have an account?
+                a(href="/login") Log in now

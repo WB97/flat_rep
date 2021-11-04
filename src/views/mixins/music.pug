@@ -2,7 +2,7 @@ mixin musicList(music)
     a(href=`/musics/${music._id}`)
         article.music_main
             if !music.img
-                div.track_cd 
+                div.fas.fa-compact-disc.track_cd
             else
                 img(src=music.img).track_image
             div.music_title=music.title

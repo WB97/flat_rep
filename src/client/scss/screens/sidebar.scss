@@ -4,18 +4,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-content: end;
   height: 100vh;
-  width: 60px;
+  width: 40px;
   top: 0;
   right: 0;
+  padding: 6px 0 6px 20px;
   background: rgb(0, 0, 0, 0.8);
-  padding: 6px 0px;
   font-size: 20px;
   transition: all 0.5s ease;
   border-left: 1px solid rgba(0, 0, 0);
-  p {
-    height: 50px;
-  }
   a {
     color: rgb(255, 255, 255);
   }
@@ -26,7 +24,7 @@
   // top
   .menu_top {
     position: relative;
-    padding: 0px 14px;
+    width: 100%;
     margin-bottom: 40px;
     .logo_content {
       display: flex;
@@ -40,10 +38,10 @@
       justify-content: center;
       position: relative;
       height: 135px;
-      width: 100%;
+      width: 94%;
       transition: all 0.4s ease;
       border-bottom: 1px solid rgb(255, 255, 255);
-      margin-top: 20px;
+      margin-top: 68px;
       // background: rgba(255, 255, 255, 0.7);
       a {
         transition: all 0.4s ease;
@@ -104,7 +102,38 @@
   .menu_middle {
     opacity: 0;
     pointer-events: none;
+    height: 70%;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(179, 179, 179);
+    }
     .playlist_list {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 20px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgb(90, 90, 90);
+      .playlist_music_main {
+        width: 90%;
+        display: flex;
+        justify-content: flex-start;
+        .playlist_track_image {
+          width: 32%;
+        }
+        .title_artist-wrap {
+          font-size: 22px;
+          width: 100%;
+          height: 100%;
+          color: white;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
       i {
         color: white;
       }
@@ -113,6 +142,9 @@
 }
 
 .active {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
   width: 300px;
   .profile_link {
     opacity: 1;
@@ -146,7 +178,7 @@
   pointer-events: none;
   position: absolute;
   top: 7;
-  left: 18px;
+  left: 0;
   font-size: 30px;
   transition: all 0.5s ease;
   &:hover {

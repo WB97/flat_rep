@@ -6,7 +6,7 @@ block content
         a(href=`/users/${notice.owner._id}`).notice_username
             div=notice.ownerName
     section.notice_mainText
-        | #{notice.mainText}
+        | !{notice.mainText}
     if loggedInUser._id==notice.owner._id
         section.notice_delete
             a(href=`${notice._id}/remove`) Delete notice

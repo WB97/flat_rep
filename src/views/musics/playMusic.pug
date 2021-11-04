@@ -4,35 +4,34 @@ include ../mixins/playlist.pug
 block content
     audio(src="/"+music.fileUrl)#audio_page
     div.main-player(data-Id=music._id, data-user=loggedInUser.name)
-        div.main
+        section.main
             img(src=`data:image/jpeg;base64,${base64}`)#bgImg
-            if check
-                i.fas.fa-heart.like_icon(data-Id="flase") &nbsp;#{music.like}
-            else
-                i.far.fa-heart.like_icon(data-Id="true") &nbsp;#{music.like}
             div#volume
-                    p#volume_show 30
-                    i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
-                    input(type="range", min="0", max="100", value="30")#volume_bar
-
-            div.top
+                p#volume_show 30
+                i(onclick="mute_sound()")#volume_icon.fa.fa-volume-up
+                input(type="range", min="0", max="100", value="30")#volume_bar
+            article.main-left
                 div.title_artist_box
                     p#name #{musicData.title}
                     p#artist #{musicData.artist}
-            div.middle
                 div.playbtn-section
                     if base64
                         img(src=`data:image/jpeg;base64,${base64}`).playpage_track_imag
                     else
                         i.fas.fa-compact-disc.cdimg
+                    if check
+                        i.fas.fa-heart.like_icon(data-Id="flase") &nbsp;#{music.like}
+                    else
+                        i.far.fa-heart.like_icon(data-Id="true") &nbsp;#{music.like}
                     button#play
                         i.fa.fa-play
-                p.lyrics_main !{musicData.unsynchronisedLyrics ? musicData.unsynchronisedLyrics.text : "Not found lyrics"}
-            
-            div.bottom
                 div#duration
                     input(type="range", min="0", max="100", value="0")#duration_slider
-                span.duration_text 00:00
+                    span.duration_text 00:00
+            article.main-right
+                
+                p.lyrics_main !{musicData.unsynchronisedLyrics ? musicData.unsynchronisedLyrics.text : "Not found lyrics"}
+            
 
     if loggedInUser._id==music.owner._id
         section.deleteSec

@@ -38,19 +38,21 @@ export const postPosting = async (req, res) => {
     session: { user },
     body: { title, mainText },
   } = req;
+  const saveMainText = mainText.replaceAll("\n", "<br>");
   const len = await Notice.find({});
   const len2 = len.length + 1;
   const dbuser = await User.findById(user._id);
   const notice = await Notice.create({
     num: len2,
     title,
-    mainText,
+    mainText: saveMainText,
     owner: user._id,
     ownerName: user.name,
   });
   await notice.save();
   dbuser.notices.push(notice._id);
   await dbuser.save();
+  console.log(notice);
   return res.sendStatus(201);
 };
 
@@ -89,7 +91,6 @@ export const pageMove = async (req, res) => {
   const { page } = req.params;
   const intPage = parseInt(page) * 10;
   const notices = await Notice.find({}).sort({ createdAt: -1 });
-  console.log(notices);
   let save = [];
   const pageNum = Math.ceil(notices.length / 10);
   if (!req.session.user) {

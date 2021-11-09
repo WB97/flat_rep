@@ -14,17 +14,19 @@ block content
                 div.title_artist_box
                     p#name #{musicData.title}
                     p#artist #{musicData.artist}
-                div.playbtn-section
-                    if base64
-                        img(src=`data:image/jpeg;base64,${base64}`).playpage_track_imag
-                    else
-                        i.fas.fa-compact-disc.cdimg
+                div.like_box
                     if check
                         i.fas.fa-heart.like_icon(data-Id="flase") &nbsp;#{music.like}
                     else
                         i.far.fa-heart.like_icon(data-Id="true") &nbsp;#{music.like}
-                    button#play
-                        i.fa.fa-play
+                div.playbtn-section-wrap
+                    div.playbtn-section
+                        if base64
+                            img(src=`data:image/jpeg;base64,${base64}`).playpage_track_imag
+                        else
+                            i.fas.fa-compact-disc.cdimg                
+                        button#play
+                            i.fa.fa-play
                 div#duration
                     input(type="range", min="0", max="100", value="0")#duration_slider
                     span.duration_text 00:00

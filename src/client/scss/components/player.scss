@@ -26,6 +26,7 @@
   }
   #volume {
     position: absolute;
+    z-index: 9999;
     width: 15%;
     top: 7%;
     right: 4%;
@@ -52,7 +53,7 @@
       flex-direction: column;
       width: 70%;
       font-size: 30px;
-      margin-bottom: 10%;
+      margin-bottom: 6%;
       #name,
       #artist {
         overflow: hidden;
@@ -61,52 +62,59 @@
         height: 40px;
       }
     }
-    .playbtn-section {
-      display: flex;
-      position: relative;
-      justify-content: center;
-      align-items: center;
+    .like_box {
       width: 70%;
-      border-radius: 20px;
-      margin-bottom: 12%;
-      &:hover {
-        #play {
-          opacity: 1;
-        }
-      }
+      margin-bottom: 2%;
+      text-align: end;
       .like_icon {
-        position: absolute;
-        top: -30px;
-        right: 0;
         cursor: pointer;
         font-size: 20px;
       }
-      .playpage_track_imag {
+    }
+    .playbtn-section-wrap {
+      width: 70%;
+      height: 339px;
+      margin-bottom: 12%;
+      .playbtn-section {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        height: 100%;
-        border-radius: inherit;
-        box-shadow: 1px 0px 20px 12px rgb(0 0 0 / 20%);
-        transition: all 0.1s ease;
+        border-radius: 15px;
         &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          #play {
+            opacity: 1;
+          }
         }
-        &:active {
-          width: 95%;
-          height: 95%;
+
+        .playpage_track_imag {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          box-shadow: 1px 0px 20px 12px rgb(0 0 0 / 20%);
+          transition: all 0.1s ease;
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          }
+          &:active {
+            width: 95%;
+            height: 95%;
+          }
         }
-      }
-      .cdimg {
-        font-size: 200px;
-      }
-      #play {
-        position: absolute;
-        font-size: 100px;
-        background: none;
-        border: none;
-        opacity: 0.5;
-        transition: 0.4s;
-        color: rgb(255, 255, 255);
+        .cdimg {
+          font-size: 200px;
+        }
+        #play {
+          position: absolute;
+          font-size: 100px;
+          background: none;
+          border: none;
+          opacity: 0.5;
+          transition: 0.4s;
+          color: rgb(255, 255, 255);
+        }
       }
     }
     #duration {
